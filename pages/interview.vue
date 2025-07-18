@@ -1,7 +1,7 @@
 <template class="bg-[var(--background-color)]">
     <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
         <div class="layout-container flex h-full grow flex-col">
-            <header
+            <!-- <header
                 class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[var(--border-color)] bg-[var(--surface-color)] px-10 py-3 shadow-sm sticky top-0 z-10">
                 <div class="flex items-center gap-4 text-[var(--text-primary)]">
                     <div class="size-6 text-[var(--primary-color)]">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-            </header>
+            </header> -->
             <main class="flex flex-1 justify-center py-10 px-4 sm:px-6 lg:px-8">
                 <div class="layout-content-container flex w-full max-w-3xl flex-col gap-6">
                     <div class="rounded-xl border border-[var(--border-color)] bg-[var(--surface-color)] p-6 shadow-sm">

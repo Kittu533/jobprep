@@ -5,26 +5,25 @@
             :class="scrolled ? 'bg-white/90 backdrop-blur-xl shadow-lg py-3' : 'bg-transparent py-6'">
             <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg">
-                        <img class="rounded-2xl" src="/logo-jobprep.jpg" alt="">
-                    </div>
-                    <span
-                        class="text-2xl font-bold bg-blue-600 bg-clip-text text-transparent">JobPrep</span>
+                    <NuxtLink to="/" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg">
+                            <img class="rounded-2xl" src="/logo-jobprep.jpg" alt="Logo" />
+                        </div>
+                        <span class="text-2xl font-bold bg-blue-600 bg-clip-text text-transparent">JobPrep</span>
+                    </NuxtLink>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <NuxtLink to="/resume-analyser"
-                        class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Resume Analyser</NuxtLink>
-                    <NuxtLink to="/generate-cv"
-                        class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Generate CV</NuxtLink>
-                    <NuxtLink to="/interview"
-                        class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Interview</NuxtLink>
-                    <NuxtLink to="/get-jobs"
-                        class="text-gray-600 hover:text-blue-600 transition-colors font-medium">Get Jobs</NuxtLink>
+                    <NuxtLink to="/resume-analyser" class="nav-link" exact-active-class="nav-link-active">Resume
+                        Analyser</NuxtLink>
+                    <NuxtLink to="/generate-cv" class="nav-link" exact-active-class="nav-link-active">Generate CV
+                    </NuxtLink>
+                    <NuxtLink to="/interview" class="nav-link" exact-active-class="nav-link-active">Interview</NuxtLink>
+                    <NuxtLink to="/get-jobs" class="nav-link" exact-active-class="nav-link-active">Get Jobs</NuxtLink>
                 </div>
                 <div class="flex items-center space-x-4">
                     <NuxtLink to="/auth/signin"
                         class="group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white
-                         px-5 py-2 rounded-xl text-md font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center gap-3">
+              px-5 py-2 rounded-xl text-md font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center gap-3">
                         Sign In
                     </NuxtLink>
                 </div>
@@ -52,44 +51,56 @@ onUnmounted(() => {
 })
 </script>
 
-
-
-<style scoped>
+<style>
 .font-sans {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* Marquee Animation */
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
+/* ACTIVE NAVLINK STYLE & ANIMATION */
+.nav-link {
+    position: relative;
+    color: #64748b;
+    /* text-gray-600 */
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    font-weight: 500;
+    transition: color 0.25s;
+    text-decoration: none;
 }
 
-.animate-marquee {
-    animation: marquee 30s linear infinite;
+.nav-link:hover {
+    color: #2563eb;
+    /* text-blue-600 */
 }
 
-/* Infinite Scroll Animation */
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
+.nav-link-active {
+    color: #2563eb !important;
+    /* text-blue-600 */
+    font-weight: 700;
+    /* font-bold */
 }
 
-.animate-scroll {
-    animation: scroll 40s linear infinite;
+.nav-link::after,
+.nav-link-active::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: #2563eb;
+    /* blue-600 */
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.35s cubic-bezier(.4, 0, .2, 1);
 }
 
-/* Custom scrollbar */
+.nav-link-active::after {
+    transform: scaleX(1);
+}
+
+/* Custom scrollbar & other style (optional, as per your original code) */
 ::-webkit-scrollbar {
     width: 6px;
 }
@@ -107,25 +118,7 @@ onUnmounted(() => {
     background: #a8a8a8;
 }
 
-/* Smooth scroll behavior */
 html {
     scroll-behavior: smooth;
-}
-
-/* Hover effects */
-.group:hover .group-hover\:translate-x-1 {
-    transform: translateX(0.25rem);
-}
-
-.group:hover .group-hover\:translate-x-2 {
-    transform: translateX(0.5rem);
-}
-
-.group:hover .group-hover\:scale-110 {
-    transform: scale(1.1);
-}
-
-.group:hover .group-hover\:bg-blue-200 {
-    background-color: rgb(191 219 254);
 }
 </style>

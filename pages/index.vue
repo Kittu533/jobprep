@@ -24,7 +24,7 @@
                         </p>
 
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-                            <button ref="mainCTA"
+                            <!-- <button ref="mainCTA"
                                 class="group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center gap-3">
                                 Start Your Journey
                                 <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none"
@@ -32,7 +32,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
-                            </button>
+                            </button>`` -->
                             <!-- <button
                                 class="text-blue-600 hover:text-blue-700 px-8 py-5 rounded-2xl text-xl font-semibold transition-colors flex items-center gap-3 group">
                                 <div
@@ -45,6 +45,7 @@
                                 </div>
                                 Watch Demo
                             </button> -->
+                            <ButtonHome ref="mainCTA" />
                         </div>
                     </div>
                 </div>
@@ -278,15 +279,11 @@
                                 <div class="w-full h-full items-center justify-center flex p-8">
                                     <div class="text-center">
                                         <div
-                                            class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center">
-                                            <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                            </svg>
+                                            class="w-56 h-56 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center">
+                                            <img src="/public/3d-register.png" alt="" />
                                         </div>
-                                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Create Profile</h3>
-                                        <p class="text-gray-600 text-base">Tell us about your goals</p>
+                                        <!-- <h3 class="text-2xl font-bold text-gray-900 mb-2">Create Profile</h3>
+                                        <p class="text-gray-600 text-base">Tell us about your goals</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -313,15 +310,10 @@
                                 <div class="w-full h-full items-center justify-center flex p-6">
                                     <div class="text-center">
                                         <div
-                                            class="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center">
-                                            <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                            </svg>
+                                            class="w-48 h-48 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center">
+                                            <img src="/public/3d-resume-analyzer.png" alt="" />
                                         </div>
-                                        <h3 class="text-lg font-bold text-gray-900 mb-2">Practice with AI</h3>
-                                        <p class="text-gray-600 text-sm">Smart simulations with instant feedback</p>
+
                                     </div>
                                 </div>
                             </div>
@@ -348,15 +340,10 @@
                                 <div class="w-full h-full items-center justify-center flex p-6">
                                     <div class="text-center">
                                         <div
-                                            class="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center">
-                                            <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                            </svg>
+                                            class="w-48 h-48 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center">
+                                            <img src="/public/3d-interview.png" alt="" />
                                         </div>
-                                        <h3 class="text-lg font-bold text-gray-900 mb-2">Expert Coaching</h3>
-                                        <p class="text-gray-600 text-sm">One-on-one sessions with experts</p>
+
                                     </div>
                                 </div>
                             </div>
@@ -383,15 +370,10 @@
                                 <div class="w-full h-full items-center justify-center flex p-6">
                                     <div class="text-center">
                                         <div
-                                            class="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center">
-                                            <svg class="w-7 h-7 text-orange-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                            </svg>
+                                            class="w-48 h-48 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center">
+                                            <img src="/public/3d-find-job.png" alt="" />
                                         </div>
-                                        <h3 class="text-lg font-bold text-gray-900 mb-2">Mock Interviews</h3>
-                                        <p class="text-gray-600 text-sm">Real interview simulations</p>
+
                                     </div>
                                 </div>
                             </div>
@@ -402,31 +384,25 @@
                     <div ref="step5" class="md:col-span-1 opacity-0 transform translate-y-8">
                         <div class="relative h-full min-h-[150px]">
                             <div
-                                class="absolute -top-3 -left-3 w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10">
+                                class="absolute -top-3 -left-3 w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10">
                                 5
                             </div>
                             <div
                                 class="relative overflow-hidden w-full h-full rounded-2xl cursor-pointer text-lg font-bold bg-white shadow-lg border border-gray-100">
                                 <div class="z-10 absolute w-full h-full peer"></div>
                                 <div
-                                    class="absolute peer-hover:-top-16 peer-hover:-left-12 peer-hover:w-[130%] peer-hover:h-[130%] -top-24 -left-12 w-24 h-32 rounded-full bg-emerald-600 transition-all duration-500">
+                                    class="absolute peer-hover:-top-16 peer-hover:-left-12 peer-hover:w-[130%] peer-hover:h-[130%] -top-24 -left-12 w-24 h-32 rounded-full bg-red-600 transition-all duration-500">
                                 </div>
                                 <div
-                                    class="absolute flex text-white text-sm text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-24 -right-12 w-28 h-32 rounded-full bg-emerald-600 transition-all duration-500">
+                                    class="absolute flex text-white text-sm text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-24 -right-12 w-28 h-32 rounded-full bg-red-600 transition-all duration-500">
                                     Get Hired<br />With Confidence
                                 </div>
                                 <div class="w-full h-full items-center justify-center flex p-6">
                                     <div class="text-center">
                                         <div
-                                            class="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-xl flex items-center justify-center">
-                                            <svg class="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
+                                            class="w-48 h-48 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center">
+                                            <img src="/public/3d-resume-generator.png" alt="" />
                                         </div>
-                                        <h3 class="text-lg font-bold text-gray-900 mb-2">Land Your Job</h3>
-                                        <p class="text-gray-600 text-sm">Get hired with confidence</p>
                                     </div>
                                 </div>
                             </div>
@@ -859,6 +835,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ButtonHome from '~/components/button-home.vue'
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger)

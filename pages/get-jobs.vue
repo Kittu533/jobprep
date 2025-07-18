@@ -1,42 +1,6 @@
 <template class="bg-[var(--background-color)]">
     <div
         class="relative flex size-full min-h-screen flex-col text-[var(--text-primary-color)] group/design-root overflow-x-hidden">
-        <header
-            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[var(--border-color)] bg-[var(--white-color)] px-10 py-4">
-            <div class="flex items-center gap-10">
-                <div class="flex items-center gap-2 text-[var(--text-primary-color)]">
-                    <svg class="h-7 w-7 text-[var(--primary-color)]" fill="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L1 9L12 16L23 9L12 2ZM12 17.6L1 10.6L12 22L23 10.6L12 17.6Z"></path>
-                    </svg>
-                    <h2 class="text-xl font-bold tracking-tight">CareerPrep</h2>
-                </div>
-                <nav class="flex items-center gap-8">
-                    <a class="text-sm font-medium text-gray-600 hover:text-[var(--primary-color)]" href="#">AI
-                        Interview</a>
-                    <a class="text-sm font-medium text-gray-600 hover:text-[var(--primary-color)]" href="#">Resume
-                        Analyzer</a>
-                    <a class="text-sm font-medium text-gray-600 hover:text-[var(--primary-color)]" href="#">Career
-                        Training</a>
-                    <a class="active-nav text-sm" href="#">Job Board</a>
-                </nav>
-            </div>
-            <div class="flex items-center justify-end gap-4">
-                <div class="relative w-64">
-                    <span
-                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary-color)]">search</span>
-                    <input
-                        class="w-full rounded-lg border border-transparent bg-[var(--secondary-color)] py-2 pl-10 pr-4 text-sm focus:border-[var(--primary-color)] focus:outline-none focus:ring-1 focus:ring-[var(--primary-color)]"
-                        placeholder="Search jobs..." type="text" />
-                </div>
-                <button
-                    class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg bg-[var(--secondary-color)] text-[var(--text-secondary-color)] hover:bg-gray-200">
-                    <span class="material-symbols-outlined">notifications</span>
-                </button>
-                <img alt="User avatar" class="h-10 w-10 rounded-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOdpSw9bTJPxXcJKez1jeQub6ex45rVPFzvyikM_K4wwr2V-A--2PcaxOB7xAAsUUQKBVmgu9-Duj82ueiTM4HvFqVhrWRPDMZ5_QV3nw9TxQ6l_3YlYUp__aC9Z7BJbHatYUEKxpunN0mu5IAeGM5jsMEMrJRPXCnFF7ZuBW6CSJ4-7TgFEnCVOZRCBhY-6pROWO_zAAQBasVGmlbQchEF-EIoJD-IfE5pkJKa9dY6fOH_-uRWNLPNnIjBnlU5whOA2-i_cNKXyg" />
-            </div>
-        </header>
         <main class="flex flex-1 gap-8 p-8">
             <aside class="w-80 flex-shrink-0">
                 <div class="rounded-lg bg-[var(--white-color)] p-6 shadow-sm">

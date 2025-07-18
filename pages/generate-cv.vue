@@ -1,6 +1,6 @@
 <template class="bg-white">
     <div class="flex flex-col min-h-screen">
-        <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-lg border-b border-[var(--border-color)]">
+        <!-- <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-lg border-b border-[var(--border-color)]">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center gap-4 text-[var(--text-primary)]">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </header> -->
         <main class="flex-grow bg-[var(--background-light)]">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
