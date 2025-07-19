@@ -28,7 +28,6 @@ export const useAuthStore = defineStore('auth', {
             this.user = user || null
             this.isAuthenticated = true
 
-            // Store in localStorage for persistence
             if (import.meta.client) {
                 localStorage.setItem('token', token)
                 localStorage.setItem('refresh_token', refreshToken)
@@ -44,7 +43,6 @@ export const useAuthStore = defineStore('auth', {
             this.user = null
             this.isAuthenticated = false
 
-            // Clear from localStorage
             if (import.meta.client) {
                 localStorage.removeItem('token')
                 localStorage.removeItem('refresh_token')
@@ -54,15 +52,12 @@ export const useAuthStore = defineStore('auth', {
 
         updateUser(user: UserProfile) {
             this.user = user
-
-            // Update in localStorage
             if (import.meta.client) {
                 localStorage.setItem('user', JSON.stringify(user))
             }
         },
 
         initializeAuth() {
-            // Initialize from localStorage on client
             if (import.meta.client) {
                 const token = localStorage.getItem('token')
                 const refreshToken = localStorage.getItem('refresh_token')

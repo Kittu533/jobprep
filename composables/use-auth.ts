@@ -2,9 +2,6 @@ import type { LoginRequest, RegisterRequest, RefreshTokenRequest } from '~/types
 import { AuthApi } from '~/composables/consume-api'
 import { useAuthStore } from '~/stores/auth'
 
-/**
- * Authentication composable for handling auth logic
- */
 export const useAuth = () => {
     const authStore = useAuthStore()
 
@@ -16,17 +13,19 @@ export const useAuth = () => {
             loading.value = true
             error.value = null
 
-            const response = await AuthApi.login(credentials)
-
-            // Extract token from response
+            const response = await AuthApi.login({
+                ...credentials,
+                role: 'student'
+            })
             const { user: userResponse } = response
-            const token = userResponse.user // Based on API docs, token is in user field
+            // Ambil access_token dari userResponse, BUKAN userResponse.user
+            const token = userResponse.access_token
             const refreshToken = userResponse.refresh_token
 
             // Store auth data
             authStore.setAuth(token, refreshToken)
 
-            // Fetch user profile after successful login
+            // Fetch user profile after login (opsional)
             await fetchUserProfile()
 
             return response
@@ -44,15 +43,13 @@ export const useAuth = () => {
             error.value = null
 
             const response = await AuthApi.register(data)
-
-            // Extract token from response
             const { user: userResponse } = response
-            const token = userResponse.user // Based on API docs, token is in user field
+
+            // ====== FIX! ======
+            const token = userResponse.access_token
             const refreshToken = userResponse.refresh_token
 
-            // Store auth data
             authStore.setAuth(token, refreshToken)
-
             return response
         } catch (err: any) {
             error.value = err.message || 'Registration failed'
@@ -72,12 +69,9 @@ export const useAuth = () => {
                 refresh_token: authStore.refreshToken
             })
 
-            // Update token in store
             authStore.setAuth(response.access_token, authStore.refreshToken, authStore.user)
-
             return response
         } catch (err: any) {
-            // If refresh fails, clear auth and redirect to login
             authStore.clearAuth()
             await navigateTo('/login')
             throw err
@@ -97,11 +91,9 @@ export const useAuth = () => {
         try {
             const { UserApi } = await import('~/composables/consume-api')
             const response = await UserApi.getProfile()
-
             if (response.data) {
                 authStore.updateUser(response.data)
             }
-
             return response.data
         } catch (err: any) {
             console.error('Failed to fetch user profile:', err)
@@ -109,6 +101,7 @@ export const useAuth = () => {
         }
     }
 
+    // ... (auto-refresh logic tidak berubah)
     // Auto-refresh token before it expires
     const setupTokenRefresh = () => {
         if (!import.meta.client) return
@@ -134,15 +127,12 @@ export const useAuth = () => {
             })
         }
     }
-
     return {
-        // State
         loading: readonly(loading),
         error: readonly(error),
         isLoggedIn: computed(() => authStore.isLoggedIn),
         user: computed(() => authStore.user),
 
-        // Methods
         login,
         register,
         logout,
