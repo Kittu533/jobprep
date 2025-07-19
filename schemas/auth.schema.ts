@@ -10,6 +10,7 @@ export const loginResponseSchema = z.object({
   message: z.string(),
   user: z.object({
     user: z.string(),
+    access_token: z.string(),      // ← tambahkan access_token!
     token_type: z.string(),
     refresh_token: z.string()
   })

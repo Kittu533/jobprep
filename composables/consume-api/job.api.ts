@@ -13,7 +13,9 @@ export class JobApi {
      * POST /jobs
      */
     static async getJobs(criteria: JobRequest): Promise<ApiResponse<JobResponse[]>> {
-        return usePost<ApiResponse<JobResponse[]>>('/jobs', criteria)
+        // Semua filter lewat query
+        return useGet<ApiResponse<JobResponse[]>>('/jobs', { query: criteria })
+        // Nanti URL jadi /API/v1/jobs?job_tipe=Software%20Engineer&provinsi=&negara=&type=
     }
 
     /**

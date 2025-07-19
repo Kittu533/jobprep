@@ -25,11 +25,31 @@ export interface ApiError {
     url?: string
 }
 
-// Auth Schemas
-export const LoginSchema = z.object({
+// Login
+// Login
+export const LoginRequestSchema = z.object({
     email: z.string().email(),
-    password: z.string().min(6),
-    role: z.enum(['student'])
+    password: z.string(),
+    role: z.string(),
+})
+
+// Auth Schemas
+export const LoginResponseSchema = z.object({
+    message: z.string(),
+    user: z.object({
+        user: z.string(),
+        access_token: z.string(),      // <--- Tambahkan access_token di sini!
+        token_type: z.string(),
+        refresh_token: z.string()
+    })
+})
+
+
+// Register
+export const RegisterRequestSchema = z.object({
+    email: z.string().email(),
+    password: z.string(),
+    confirm_password: z.string(),
 })
 
 export const RegisterSchema = z.object({
@@ -41,11 +61,17 @@ export const RegisterSchema = z.object({
     path: ["confirm_password"]
 })
 
-export const RefreshTokenSchema = z.object({
+// Refresh Token
+export const RefreshTokenRequestSchema = z.object({
     refresh_token: z.string()
 })
-
+export const RefreshTokenResponseSchema = z.object({
+    access_token: z.string(),
+    token_type: z.string(),
+})
+export type RefreshTokenResponse = z.infer<typeof RefreshTokenResponseSchema>
 // User Schemas
+// UserProfile example (update sesuai backendmu!)
 export const UserProfileSchema = z.object({
     student_id: z.string(),
     email: z.string().email(),
@@ -53,7 +79,7 @@ export const UserProfileSchema = z.object({
     major: z.string(),
     username: z.string(),
     university: z.string(),
-    profile_image: z.string().url().optional()
+    profile_image: z.string().nullable().optional(),
 })
 
 export const EditProfileSchema = z.object({
@@ -139,9 +165,10 @@ export const InterviewReportSchema = z.object({
 })
 
 // Type exports
-export type LoginRequest = z.infer<typeof LoginSchema>
+export type LoginRequest = z.infer<typeof LoginRequestSchema>
+export type LoginResponse = z.infer<typeof LoginResponseSchema>
 export type RegisterRequest = z.infer<typeof RegisterSchema>
-export type RefreshTokenRequest = z.infer<typeof RefreshTokenSchema>
+export type RefreshTokenRequest = z.infer<typeof RefreshTokenRequestSchema>
 export type UserProfile = z.infer<typeof UserProfileSchema>
 export type EditProfileRequest = z.infer<typeof EditProfileSchema>
 export type CreateResumeRequest = z.infer<typeof CreateResumeSchema>

@@ -44,7 +44,7 @@ export class AuthApi {
 
         // Redirect to login or home page
         if (import.meta.client) {
-            navigateTo('/login')
+            navigateTo('/auth/signin')
         }
     }
 }

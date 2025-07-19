@@ -9,10 +9,11 @@
                 </p>
             </div>
             <div class="bg-[var(--surface-primary)] p-8 shadow-xl rounded-2xl space-y-6">
+                <Loading v-if="loading" class="fixed inset-0 z-50 bg-white/80 flex items-center justify-center" />
 
                 <UForm :schema="schema" :state="state" class="space-y-6" @submit="onSubmit">
                     <UFormField label="Email" name="email" class="space-y-2">
-                        <UInput v-model="state.email" placeholder="Email address"  size="xl"
+                        <UInput v-model="state.email" placeholder="Email address" size="xl"
                             class="block w-full appearance-none rounded-md border shadow-sm focus:border-[var(--brand-primary)] focus:outline-none focus:ring-1 focus:ring-[var(--brand-primary)] sm:text-sm" />
                     </UFormField>
 
@@ -23,8 +24,8 @@
 
                     <p class="text-end text-xs text-[var(--text-secondary)]">
                         Don't have an account?
-                        <a class="font-medium text-[var(--brand-primary)] hover:underline" href="/auth/signup">Sign
-                            up</a>
+                        <NuxtLink class="font-medium text-[var(--brand-primary)] hover:underline" to="/auth/signup">Sign
+                            up</NuxtLink>
                     </p>
 
                     <UButton type="submit"
@@ -43,7 +44,11 @@
 </template>
 <script setup lang="ts">
 import * as z from 'zod'
-import type { FormError, FormSubmitEvent } from '@nuxt/ui'
+import type { FormSubmitEvent } from '@nuxt/ui'
+import Loading from '~/components/loading.vue'
+const loading = ref(false)
+const { login } = useAuth()
+const toast = useToast()
 
 definePageMeta({
     title: 'Sign In - JobPrep'
@@ -54,25 +59,50 @@ const schema = z.object({
     password: z.string().min(8, 'Must be at least 8 characters')
 })
 
-type Schema = z.output<typeof schema>
-
+type Schema = z.infer<typeof schema>
 const state = reactive<Partial<Schema>>({
     email: undefined,
     password: undefined
 })
 
-const validate = (state: any): FormError[] => {
-    const errors = []
-    if (!state.email) errors.push({ name: 'email', message: 'Required' })
-    if (!state.password) errors.push({ name: 'password', message: 'Required' })
-    return errors
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+    loading.value = true
+    const start = Date.now()
+    try {
+        await login({
+            email: event.data.email,
+            password: event.data.password,
+            role: 'student'
+        })
+        toast.add({ title: 'Success', description: 'Login successful!', color: 'success' })
+        await navigateTo('/') // redirect sesuai kebutuhan
+    } catch (err: any) {
+        // Default message
+        let message = 'Login failed'
+        // Jika ada error dari backend (contoh: { error: "500: Internal server error" })
+        if (err.data?.error) {
+            message = err.data.error
+        }
+        // Jika array detail error (misal dari FastAPI)
+        else if (err.data && Array.isArray(err.data.detail)) {
+            message = err.data.detail.map((d: any) => d.msg).join(', ')
+        }
+        // Jika ada message spesifik
+        else if (err.message && !err.message.includes('/API/')) {
+            message = err.message
+        }
+        // Tampilkan error yang sudah clean, tanpa URL/method/status
+        toast.add({ title: 'Error', description: message, color: 'error' })
+    } finally {
+        const elapsed = Date.now() - start
+        if (elapsed < 2000) {
+            await new Promise(resolve => setTimeout(resolve, 2000 - elapsed))
+        }
+        loading.value = false
+    }
 }
 
-const toast = useToast()
-async function onSubmit(event: FormSubmitEvent<Schema>) {
-    toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' })
-    console.log(event.data)
-}
+
 </script>
 
 <style type="text/tailwindcss">

@@ -21,12 +21,22 @@
                     <NuxtLink to="/get-jobs" class="nav-link" exact-active-class="nav-link-active">Get Jobs</NuxtLink>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <NuxtLink to="/auth/signin"
-                        class="group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white
-              px-5 py-2 rounded-xl text-md font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center gap-3">
-                        Sign In
-                    </NuxtLink>
+                    <template v-if="isLoggedIn">
+                        <button @click="logout"
+                            class="group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white
+            px-5 py-2 rounded-xl text-md font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-red-500/25 flex items-center gap-3">
+                            Logout
+                        </button>
+                    </template>
+                    <template v-else>
+                        <NuxtLink to="/auth/signin"
+                            class="group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white
+            px-5 py-2 rounded-xl text-md font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center gap-3">
+                            Sign In
+                        </NuxtLink>
+                    </template>
                 </div>
+
             </div>
         </nav>
         <!-- Spacer supaya konten tidak ketutup navbar -->
@@ -38,6 +48,8 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useAuthStore } from '~/stores/auth' // Path sesuai projectmu!
+
 const navbar = ref(null)
 const scrolled = ref(false)
 const handleScroll = () => {
@@ -49,6 +61,17 @@ onMounted(() => {
 onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll)
 })
+
+// --- CEK LOGIN ---
+const authStore = useAuthStore()
+// Pinia SSR-friendly: pastikan authStore.initializeAuth() dipanggil di root/layout jika SSR
+const isLoggedIn = computed(() => !!authStore.token)
+
+// Tombol Logout
+const logout = async () => {
+    authStore.clearAuth()
+    await navigateTo('/auth/signin')
+}
 </script>
 
 <style>
