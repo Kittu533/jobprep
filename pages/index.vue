@@ -23,28 +23,7 @@
                             next interview.
                         </p>
 
-                        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-                            <!-- <button ref="mainCTA"
-                                class="group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25 flex items-center gap-3">
-                                Start Your Journey
-                                <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                </svg>
-                            </button>`` -->
-                            <!-- <button
-                                class="text-blue-600 hover:text-blue-700 px-8 py-5 rounded-2xl text-xl font-semibold transition-colors flex items-center gap-3 group">
-                                <div
-                                    class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                Watch Demo
-                            </button> -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
                             <ButtonHome ref="mainCTA" />
                         </div>
                     </div>
