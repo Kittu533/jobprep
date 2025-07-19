@@ -50,9 +50,6 @@ const loading = ref(false)
 const { login } = useAuth()
 const toast = useToast()
 
-definePageMeta({
-    title: 'Sign In - JobPrep'
-})
 
 const schema = z.object({
     email: z.string().email('Invalid email'),
