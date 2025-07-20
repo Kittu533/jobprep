@@ -261,8 +261,7 @@
                                             class="w-56 h-56 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center">
                                             <img src="/public/3d-register.png" alt="" />
                                         </div>
-                                        <!-- <h3 class="text-2xl font-bold text-gray-900 mb-2">Create Profile</h3>
-                                        <p class="text-gray-600 text-base">Tell us about your goals</p> -->
+                                        <!-- <h3 class="text-2xl font-bold text-gray-900 mb-2">Create Profile</h3> -->
                                     </div>
                                 </div>
                             </div>
@@ -284,13 +283,14 @@
                                 </div>
                                 <div
                                     class="absolute flex text-white text-sm text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-24 -right-12 w-28 h-32 rounded-full bg-green-600 transition-all duration-500">
-                                    Smart AI<br />Simulations
+                                    Get Ai feedback<br />to Perfect it.
                                 </div>
                                 <div class="w-full h-full items-center justify-center flex p-6">
                                     <div class="text-center">
                                         <div
                                             class="w-48 h-48 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center">
                                             <img src="/public/3d-resume-analyzer.png" alt="" />
+                                            <!-- <h3 class="text-2xl font-bold text-gray-900 mb-2">Analyze Resume</h3> -->
                                         </div>
 
                                     </div>
@@ -314,7 +314,7 @@
                                 </div>
                                 <div
                                     class="absolute flex text-white text-sm text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-24 -right-12 w-28 h-32 rounded-full bg-purple-600 transition-all duration-500">
-                                    One-on-One<br />Expert Sessions
+                                    One-on-One with Ai On <br />Expert Sessions
                                 </div>
                                 <div class="w-full h-full items-center justify-center flex p-6">
                                     <div class="text-center">
@@ -344,7 +344,7 @@
                                 </div>
                                 <div
                                     class="absolute flex text-white text-sm text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-24 -right-12 w-28 h-32 rounded-full bg-orange-600 transition-all duration-500">
-                                    Real Interview<br />Simulations
+                                Find Jobs Easily<br />& Apply Instantly
                                 </div>
                                 <div class="w-full h-full items-center justify-center flex p-6">
                                     <div class="text-center">
@@ -374,7 +374,7 @@
                                 </div>
                                 <div
                                     class="absolute flex text-white text-sm text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-24 -right-12 w-28 h-32 rounded-full bg-red-600 transition-all duration-500">
-                                    Get Hired<br />With Confidence
+                                    Generate Your CV<br />with Proven ATS Template
                                 </div>
                                 <div class="w-full h-full items-center justify-center flex p-6">
                                     <div class="text-center">

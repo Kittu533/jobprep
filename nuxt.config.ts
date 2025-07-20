@@ -22,4 +22,7 @@ export default defineNuxtConfig({
     }
   },
   devtools: { enabled: true }
+  // icon: {
+  //   componentName: 'NuxtIcon'
+  // },
 })

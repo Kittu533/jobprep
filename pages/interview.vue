@@ -1,218 +1,750 @@
-<template class="bg-[var(--background-color)]">
-    <div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
-        <div class="layout-container flex h-full grow flex-col">
-            <!-- <header
-                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[var(--border-color)] bg-[var(--surface-color)] px-10 py-3 shadow-sm sticky top-0 z-10">
-                <div class="flex items-center gap-4 text-[var(--text-primary)]">
-                    <div class="size-6 text-[var(--primary-color)]">
-                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
-                                fill="currentColor" fill-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">JobPrep</h2>
-                </div>
-                <div class="flex flex-1 justify-end gap-6">
-                    <nav class="flex items-center gap-8">
-                        <a class="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors"
-                            href="#">Home</a>
-                        <a class="text-sm font-bold text-[var(--primary-color)]" href="#">Practice</a>
-                        <a class="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors"
-                            href="#">Resources</a>
-                        <a class="text-sm font-medium text-[var(--text-primary)] hover:text-[var(--primary-color)] transition-colors"
-                            href="#">Community</a>
-                    </nav>
+<template>
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <!-- Header -->
+        <header ref="headerRef"
+            class="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-slate-200/60 shadow-sm">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+                <div class="flex items-center justify-between">
                     <div class="flex items-center gap-4">
-                        <button
-                            class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-100 text-[var(--text-secondary)] hover:bg-gray-200 transition-colors">
-                            <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
                                 </path>
                             </svg>
-                        </button>
-                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-offset-2 ring-[var(--primary-color)]"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDocOSKTbnH-_TfZc8fm8HdXbqJMJr8eFM7rslzQztO5yrFIWfCHzEoLss0goF2REK8ZPOKCNWlNtSph62r4NEGcnQow7odYA5s22hosqoc4jA_tujYTLeDCBYgw6OlShvdASIPjk-RFVhCSGS6XCCgrnqsTZzwAGlbpzdnjHiph4u_iB0sBUfUoIEz_behUauzjoNlSXOZzJ0o5lp1FePW-4URebmvNCfLLP9JDdyFlPIGGAC4LzMepOv4SovWQYkSXsS6b9-5qhhz");'>
+                        </div>
+                        <h1
+                            class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
+                            Simulator Wawancara AI
+                        </h1>
+                    </div>
+
+                    <!-- Progress Indicator -->
+                    <div v-if="sessionStarted" class="flex items-center gap-4">
+                        <div class="text-sm text-slate-600 hidden sm:block">
+                            Pertanyaan <span class="font-bold text-slate-800">{{ currentQuestion }}</span> / {{
+                                totalQuestions }}
+                        </div>
+                        <div class="w-24 sm:w-32 h-2 bg-slate-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-500 ease-out"
+                                :style="{ width: `${progress}%` }"></div>
                         </div>
                     </div>
                 </div>
-            </header> -->
-            <main class="flex flex-1 justify-center py-10 px-4 sm:px-6 lg:px-8">
-                <div class="layout-content-container flex w-full max-w-3xl flex-col gap-6">
-                    <div class="rounded-xl border border-[var(--border-color)] bg-[var(--surface-color)] p-6 shadow-sm">
-                        <div class="flex items-center justify-between mb-2">
-                            <p class="text-sm font-medium text-[var(--text-primary)]">Interview Progress</p>
-                            <p class="text-sm font-medium text-[var(--text-secondary)]">Question <span
-                                    class="text-[var(--text-primary)] font-bold">2</span>/10</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+            <!-- Session Setup -->
+            <div v-if="!sessionStarted" ref="setupRef" class="text-center space-y-8">
+                <div class="space-y-4">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Siap untuk Wawancara?</h2>
+                    <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto">
+                        Latih kemampuan wawancara Anda dengan AI interviewer. Dapatkan feedback real-time dan tingkatkan
+                        jawaban Anda.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-8 max-w-md mx-auto">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-3">Posisi Wawancara</label>
+                            <input type="text" v-model="selectedPosition"
+                                placeholder="Contoh: Software Engineer, UI/UX Designer, Product Manager"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+                                :class="{ 'border-red-300 focus:ring-red-500': showValidationError }" />
+                            <div class="mt-2 text-xs text-slate-500">
+                                <p class="mb-1">Contoh posisi yang bisa Anda masukkan:</p>
+                                <p>Frontend Developer, Data Analyst, Marketing Manager, HR Specialist, dll.</p>
+                            </div>
+                            <div v-if="showValidationError" class="mt-2 text-sm text-red-600">
+                                Mohon masukkan posisi wawancara yang ingin Anda lamar
+                            </div>
                         </div>
-                        <div class="progress-bar h-2 w-full overflow-hidden">
-                            <div class="progress-bar-fill" style="width: 20%;"></div>
-                        </div>
+
+                        <button @click="handleStartInterview" :disabled="isLoading"
+                            class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-4 rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all transform hover:scale-105 disabled:opacity-50 disabled:transform-none shadow-lg">
+                            <span v-if="!isLoading" class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                                Mulai Wawancara
+                            </span>
+                            <span v-else class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                    </path>
+                                </svg>
+                                Memulai...
+                            </span>
+                        </button>
                     </div>
-                    <div class="flex flex-col gap-8">
-                        <div class="flex items-start gap-4 chat-bubble">
-                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-12 h-12 shrink-0 border-2 border-white shadow-md"
-                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBu1YfjwMt5ixUitg2f1qe16Jbvy9WLg5zlJZExXSkpfToraYANCo6ic-NX9U6l71hi_1votC39DOxIRkZytLNFP1_5hMAX3yayQtwMKL6dOzVl906nwSxC_uN7TXtVGzQSVMWjbXk8-yIavXUcf9JZXTrlSYnMjzxOpoKWFmn6UMFOPraH4PDYOqb9xWaEnne7GKpKL5_01sBdnq2s9APEMWRvQvFMrX9LJ4lwsrCqWhBXXqqfmyRI24XEvbQ9UzmdYbHoW99fJFtZ");'>
-                            </div>
-                            <div class="flex flex-1 flex-col gap-2 items-start">
-                                <p class="text-sm font-bold text-[var(--text-primary)]">AI Interviewer</p>
-                                <div
-                                    class="relative rounded-xl rounded-tl-none bg-[var(--surface-color)] px-5 py-3 text-[var(--text-primary)] shadow-md">
-                                    <p class="text-base font-normal leading-relaxed">Welcome to your interview practice!
-                                        I'm here to help you prepare. Let's start with a common question: <strong
-                                            class="font-semibold">Tell me about yourself.</strong></p>
-                                    <div class="absolute left-[-10px] top-0 h-4 w-4">
-                                        <div
-                                            class="h-full w-full bg-[var(--surface-color)] [clip-path:polygon(100%_0,0_100%,100%_100%)]">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-12 h-12 shrink-0 border-2 border-white shadow-md"
-                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDocOSKTbnH-_TfZc8fm8HdXbqJMJr8eFM7rslzQztO5yrFIWfCHzEoLss0goF2REK8ZPOKCNWlNtSph62r4NEGcnQow7odYA5s22hosqoc4jA_tujYTLeDCBYgw6OlShvdASIPjk-RFVhCSGS6XCCgrnqsTZzwAGlbpzdnjHiph4u_iB0sBUfUoIEz_behUauzjoNlSXOZzJ0o5lp1FePW-4URebmvNCfLLP9JDdyFlPIGGAC4LzMepOv4SovWQYkSXsS6b9-5qhhz");'>
-                            </div>
-                            <div class="flex w-full flex-col gap-4">
-                                <div
-                                    class="relative rounded-xl rounded-tr-none bg-[var(--primary-color)] px-5 py-3 text-white shadow-md self-end max-w-md">
-                                    <p class="text-base font-normal leading-relaxed">I'm a passionate frontend developer
-                                        with 5 years of experience...</p>
-                                    <div class="absolute right-[-10px] top-0 h-4 w-4">
-                                        <div
-                                            class="h-full w-full bg-[var(--primary-color)] [clip-path:polygon(0_0,0%_100%,100%_100%)]">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="rounded-xl border border-green-200 bg-green-50 p-4 text-green-800 flex items-start gap-3 chat-bubble">
-                                    <svg class="h-6 w-6 text-green-500 shrink-0" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-width="2"></path>
+                </div>
+            </div>
+
+            <!-- Interview Chat -->
+            <div v-if="sessionStarted" class="space-y-6">
+                <!-- Chat Messages -->
+                <div ref="messagesRef" class="space-y-6 mb-8 max-h-[60vh] overflow-y-auto pr-2">
+                    <div v-for="message in messages" :key="message.id" class="message-item opacity-100"
+                        :class="message.type === 'user' ? 'flex-row-reverse' : ''">
+                        <div class="flex gap-4" :class="message.type === 'user' ? 'flex-row-reverse' : ''">
+                            <!-- Avatar -->
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-lg" :class="message.type === 'user'
+                                    ? 'bg-gradient-to-br from-emerald-400 to-teal-500'
+                                    : 'bg-gradient-to-br from-blue-500 to-indigo-600'">
+                                    <svg v-if="message.type === 'user'" class="w-6 h-6 text-white" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
+                                        </path>
                                     </svg>
-                                    <div>
-                                        <p class="font-bold text-sm">Great start!</p>
-                                        <p class="text-sm">This is a solid introduction. You clearly state your role and
-                                            experience. To make it even better, you could add a specific achievement
-                                            that showcases your skills.</p>
-                                    </div>
+                                    <svg v-else class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex items-start gap-4 chat-bubble">
-                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-12 h-12 shrink-0 border-2 border-white shadow-md"
-                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBu1YfjwMt5ixUitg2f1qe16Jbvy9WLg5zlJZExXSkpfToraYANCo6ic-NX9U6l71hi_1votC39DOxIRkZytLNFP1_5hMAX3yayQtwMKL6dOzVl906nwSxC_uN7TXtVGzQSVMWjbXk8-yIavXUcf9JZXTrlSYnMjzxOpoKWFmn6UMFOPraH4PDYOqb9xWaEnne7GKpKL5_01sBdnq2s9APEMWRvQvFMrX9LJ4lwsrCqWhBXXqqfmyRI24XEvbQ9UzmdYbHoW99fJFtZ");'>
-                            </div>
-                            <div class="flex flex-1 flex-col gap-2 items-start">
-                                <p class="text-sm font-bold text-[var(--text-primary)]">AI Interviewer</p>
-                                <div
-                                    class="relative rounded-xl rounded-tl-none bg-[var(--surface-color)] px-5 py-3 text-[var(--text-primary)] shadow-md">
-                                    <div class="flex items-center gap-2 typing-indicator">
-                                        <span class="animate-bounce"></span>
-                                        <span class="animate-bounce [animation-delay:-0.15s]"></span>
-                                        <span class="animate-bounce [animation-delay:-0.3s]"></span>
+
+                            <!-- Message Content -->
+                            <div class="flex-1 max-w-3xl">
+                                <div class="mb-2 flex items-center gap-2">
+                                    <span class="text-sm font-semibold text-slate-700">
+                                        {{ message.type === 'user' ? 'Anda' : 'AI Interviewer' }}
+                                    </span>
+                                    <span v-if="message.score"
+                                        class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full flex items-center gap-1">
+                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                        Skor: {{ message.score }}/10
+                                    </span>
+                                </div>
+
+                                <div class="rounded-2xl p-4 shadow-sm border" :class="message.type === 'user'
+                                    ? 'bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200 rounded-tr-sm'
+                                    : 'bg-white border-slate-200 rounded-tl-sm'">
+                                    <p class="text-slate-800 leading-relaxed">{{ message.text }}</p>
+
+                                    <!-- Feedback -->
+                                    <div v-if="message.feedback"
+                                        class="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                        <div class="text-sm font-medium text-yellow-800 mb-1 flex items-center gap-1">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                            </svg>
+                                            Feedback AI:
+                                        </div>
+                                        <div class="text-sm text-yellow-700">{{ message.feedback }}</div>
                                     </div>
+
+                                    <!-- Audio Player -->
+                                    <AudioPlayer v-if="message.type === 'ai' && message.audioUrl"
+                                        :audio-url="message.audioUrl" :message-id="message.id" class="mt-4" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 sticky bottom-0 bg-[var(--background-color)] py-4">
-                        <div
-                            class="flex items-end gap-4 rounded-xl border border-[var(--border-color)] bg-[var(--surface-color)] p-4 shadow-lg">
-                            <textarea
-                                class="form-input flex w-full flex-1 resize-none overflow-hidden rounded-lg border-gray-300 bg-gray-50 focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)] p-3 text-base font-normal leading-normal transition-all"
-                                oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight) + 'px';"
-                                placeholder="Type your answer here..." rows="1"></textarea>
-                            <button
-                                class="flex h-12 w-12 min-w-[48px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[var(--primary-color)] text-white shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-offset-2 transition-all disabled:opacity-50">
-                                <svg fill="currentColor" height="24" viewBox="0 0 256 256" width="24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L204.69,128,138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66ZM45.66,133.66,21.66,109.66a8,8,0,0,1,0-11.32L93.66,26.34a8,8,0,0,1,11.32,11.32L44.69,98l60.29,60.29a8,8,0,1,1-11.32,11.32Z"
-                                        transform="rotate(90 128 128)"></path>
+
+                    <!-- Typing Indicator -->
+                    <TypingIndicator v-if="isAiTyping" />
+                </div>
+
+                <!-- Input Area -->
+                <div v-if="!isCompleted"
+                    class="sticky bottom-0 bg-gradient-to-t from-slate-50 via-slate-50/95 to-transparent pt-6">
+                    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-4">
+                        <div class="flex gap-4 items-end">
+                            <div class="flex-1">
+                                <textarea v-model="jawaban" @input="handleInput" @keydown="handleKeyDown"
+                                    :disabled="isLoading || isAiTyping"
+                                    placeholder="Ketik jawaban Anda di sini... (Ctrl+Enter untuk mengirim)"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none bg-white"
+                                    rows="3" ref="textareaRef" />
+                            </div>
+                            <button @click="kirimJawaban" :disabled="!bisaKirim"
+                                class="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl hover:from-blue-600 hover:to-indigo-700 transition-all transform hover:scale-105 disabled:opacity-50 disabled:transform-none shadow-lg">
+                                <svg v-if="!isLoading" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                                </svg>
+                                <svg v-else class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                    </path>
                                 </svg>
                             </button>
                         </div>
+                        <div class="mt-2 text-xs text-slate-500 text-center">
+                            Pertanyaan {{ currentQuestion }} dari {{ totalQuestions }} • Tekan Ctrl+Enter untuk mengirim
+                        </div>
                     </div>
                 </div>
-            </main>
+
+                <!-- Interview Summary -->
+                <InterviewSummary v-if="isCompleted && summary" :summary="summary" @restart="handleRestart" />
+            </div>
+        </main>
+
+        <!-- Error Modal -->
+        <div v-if="errorMessage" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-6 max-w-md mx-4">
+                <h3 class="text-lg font-semibold text-red-600 mb-2">Error</h3>
+                <p class="text-gray-700 mb-4">{{ errorMessage }}</p>
+                <button @click="errorMessage = null"
+                    class="w-full bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+                    Tutup
+                </button>
+            </div>
         </div>
     </div>
-
 </template>
 
-<style type="text/tailwindcss">
-:root {
-    --primary-color: #0c7ff2;
-    --background-color: #f8f9fa;
-    --text-primary: #111418;
-    --text-secondary: #60758a;
-    --surface-color: #ffffff;
-    --border-color: #e5e7eb;
-    --success-color: #28a745;
+<script setup lang="ts">
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { useInterviewStore } from '~/stores/interview'
+import { InterviewApi } from '~/composables/consume-api/interview.api'
+import type { InterviewAnswer } from '~/types/interview'
+import { storeToRefs } from 'pinia'
+
+// Store
+const store = useInterviewStore()
+
+// Simplified token getter - directly from localStorage
+const getToken = (): string => {
+    const token = localStorage.getItem('access_token') || localStorage.getItem('token')
+    if (!token) {
+        throw new Error('Token akses tidak ditemukan. Silakan login terlebih dahulu.')
+    }
+    return token
 }
 
-body {
-    font-family: 'Inter', sans-serif;
+// Destructure store state
+const {
+    sessionStarted,
+    messages,
+    isLoading,
+    isAiTyping,
+    isCompleted,
+    summary,
+    currentQuestion,
+    totalQuestions,
+    progress
+} = storeToRefs(store)
+
+const {
+    startSession,
+    addMessage,
+    nextQuestion,
+    completeInterview,
+    resetSession,
+    updateMessage
+} = store
+
+// Local reactive state
+const selectedPosition = ref('')
+const showValidationError = ref(false)
+const jawaban = ref('')
+const textareaRef = ref<HTMLTextAreaElement>()
+const headerRef = ref<HTMLElement>()
+const setupRef = ref<HTMLElement>()
+const messagesRef = ref<HTMLElement>()
+const errorMessage = ref<string | null>(null)
+
+// SSE connection
+let eventSource: EventSource | null = null
+let streamReader: ReadableStreamDefaultReader<Uint8Array> | null = null
+
+// Computed properties
+const bisaKirim = computed(() => {
+    return jawaban.value.trim().length > 0 &&
+        !isLoading.value &&
+        !isAiTyping.value &&
+        !isCompleted.value
+})
+
+// Error handling
+const handleError = (error: any) => {
+    console.error('Interview error:', error)
+    errorMessage.value = error.message || 'Terjadi kesalahan tidak diketahui'
+    isLoading.value = false
+    isAiTyping.value = false
 }
 
-.progress-bar {
-    background-color: var(--border-color);
-    border-radius: 9999px;
+// Input validation
+const validatePosition = () => {
+    const position = selectedPosition.value.trim()
+    if (!position || position.length < 2) {
+        showValidationError.value = true
+        return false
+    }
+    showValidationError.value = false
+    return true
 }
 
-.progress-bar-fill {
-    background-color: var(--primary-color);
-    height: 100%;
-    border-radius: 9999px;
-    transition: width 0.5s ease-in-out;
+// Enhanced SSE message handling for interview flow
+const handleSSEMessage = (data: any) => {
+    try {
+        console.log('Processing interview message:', data)
+
+        if (data.type === 'question') {
+            // Handle new question from AI
+            const questionText = data.text || data.question || data.message
+            console.log('Received question:', questionText)
+
+            isAiTyping.value = false
+            addMessage({
+                type: 'ai',
+                text: questionText,
+                timestamp: new Date().toISOString(),
+                questionNumber: data.questionNumber || currentQuestion.value
+            })
+
+            // Focus on textarea after AI message appears
+            nextTick(() => {
+                textareaRef.value?.focus()
+            })
+
+        } else if (data.type === 'complete') {
+            // Handle interview completion with summary
+            console.log('Interview completed with summary:', data.summary)
+
+            isAiTyping.value = false
+
+            // Add completion message
+            addMessage({
+                type: 'ai',
+                text: 'Wawancara telah selesai! Berikut adalah ringkasan hasil wawancara Anda.',
+                timestamp: new Date().toISOString()
+            })
+
+            // Complete interview with summary
+            completeInterview({
+                uid: data.summary.uid,
+                session_id: data.summary.session_id,
+                position: data.summary.position,
+                answers_summary: data.summary.answers_summary,
+                overall_score: data.summary.overall_score,
+                suggestions: data.summary.suggestions
+            })
+
+            closeSSEConnection()
+
+        } else if (data.type === 'feedback') {
+            // Handle answer feedback
+            console.log('Received feedback:', data)
+            const lastUserMessage = messages.value.findLast(m => m.type === 'user')
+            if (lastUserMessage) {
+                updateMessage(lastUserMessage.id, {
+                    score: data.score,
+                    feedback: data.feedback
+                })
+            }
+
+        } else if (data.type === 'error') {
+            console.log('Received error:', data.message)
+            handleError(new Error(data.message))
+            closeSSEConnection()
+
+        } else {
+            // Handle any other message format
+            const messageText = data.message || data.text || data.question
+            if (messageText) {
+                console.log('Received general message:', messageText)
+                isAiTyping.value = false
+                addMessage({
+                    type: 'ai',
+                    text: messageText,
+                    timestamp: new Date().toISOString()
+                })
+
+                nextTick(() => {
+                    textareaRef.value?.focus()
+                })
+            } else {
+                console.log('Unknown message format:', data)
+                isAiTyping.value = false
+            }
+        }
+
+    } catch (error) {
+        console.error('Error processing interview message:', error)
+        isAiTyping.value = false
+    }
+}
+const handleSendMessage = async () => {
+    if (!canSendAnswer.value) return
+
+    try {
+        isLoading.value = true
+        const answerText = jawaban.value.trim()
+
+        // Add user message to chat
+        const userMessageId = addMessage({
+            type: 'user',
+            text: answerText,
+            timestamp: new Date().toISOString()
+        })
+
+        // Clear current answer and show AI typing
+        clearCurrentAnswer()
+        isAiTyping.value = true
+
+        // Send answer to API
+        const answerData: InterviewAnswer = {
+            answer_text: answerText,
+            timestamp: new Date().toISOString()
+        }
+
+        const response = await InterviewApi.sendAnswer(answerData, getToken())
+
+        if (!response.success) {
+            throw new Error(response.message || 'Failed to send answer')
+        }
+
+        console.log('Answer sent successfully:', response.message)
+
+        // Move to next question
+        nextQuestion()
+
+    } catch (error) {
+        console.error('Error sending answer:', error)
+        handleError(error)
+        isAiTyping.value = false
+    } finally {
+        isLoading.value = false
+    }
 }
 
-.chat-bubble {
-    animation: pop-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
 
-@keyframes pop-in {
-    0% {
-        transform: scale(0.9);
-        opacity: 0;
+const closeSSEConnection = () => {
+    if (eventSource) {
+        eventSource.close()
+        eventSource = null
     }
 
-    100% {
-        transform: scale(1);
-        opacity: 1;
+    // Don't need to manage streamReader here since processStream handles it internally
+    if (streamReader) {
+        try {
+            streamReader.releaseLock()
+        } catch (error) {
+            console.warn('Error releasing stream reader lock:', error)
+        }
+        streamReader = null
     }
 }
 
-.typing-indicator span {
-    height: 8px;
-    width: 8px;
-    background-color: var(--text-secondary);
-    border-radius: 50%;
-    display: inline-block;
-    animation: bounce 1.3s infinite ease-in-out;
+
+// Methods
+const handleInput = (event: Event) => {
+    const target = event.target as HTMLTextAreaElement
+    jawaban.value = target.value
 }
 
-.typing-indicator span:nth-of-type(2) {
-    animation-delay: -1.1s;
+const handleStartInterview = async () => {
+    try {
+        // Validate position input
+        if (!validatePosition()) {
+            return
+        }
+
+        isLoading.value = true
+        errorMessage.value = null
+
+        // Get access token
+        let accessToken: string
+        try {
+            accessToken = getToken()
+        } catch (authError) {
+            console.error('Token error:', authError)
+            throw new Error('Gagal mendapatkan token akses. Silakan login terlebih dahulu.')
+        }
+
+        // Clean and format the position input
+        const cleanPosition = selectedPosition.value.trim()
+
+        // Start session via API (simplified - just returns token)
+        const sessionResponse = await InterviewApi.startSession(cleanPosition)
+
+        // Start session in store - use token as session identifier
+        startSession(cleanPosition, sessionResponse.token)
+
+        // Use fetch stream directly since EventSource doesn't support Authorization headers
+        await setupFetchStream(accessToken, cleanPosition)
+
+    } catch (error) {
+        handleError(error)
+    } finally {
+        isLoading.value = false
+    }
+}
+const setupFetchStream = async (accessToken: string, position: string) => {
+    try {
+        console.log('Setting up fetch stream for position:', position)
+
+        const stream = await InterviewApi.createAuthenticatedStream(
+            position,
+            accessToken
+        )
+
+        if (stream) {
+            console.log('Stream created successfully, starting to process...')
+            isAiTyping.value = true
+
+            await InterviewApi.processStream(
+                stream,
+                (data) => {
+                    console.log('Received SSE data from fetch:', data)
+                    handleSSEMessage(data)
+                },
+                (error) => {
+                    console.error('Stream processing error:', error)
+                    handleError(error)
+                    isAiTyping.value = false
+                },
+                () => {
+                    console.log('Stream completed')
+                    isAiTyping.value = false
+                }
+            )
+        } else {
+            throw new Error('Failed to create stream')
+        }
+    } catch (error) {
+        console.error('Fetch stream setup failed:', error)
+        handleError(error)
+        isAiTyping.value = false
+    }
+}
+const kirimJawaban = async () => {
+    if (!bisaKirim.value) return
+
+    try {
+        isLoading.value = true
+        errorMessage.value = null
+
+        // Get access token
+        let accessToken: string
+        try {
+            accessToken = getToken()
+        } catch (authError) {
+            console.error('Token error:', authError)
+            throw new Error('Gagal mendapatkan token akses. Silakan login terlebih dahulu.')
+        }
+
+        // Add user message immediately
+        const userMessageId = addMessage({
+            type: 'user',
+            text: jawaban.value,
+            timestamp: new Date().toISOString()
+        })
+
+        // Prepare answer payload
+        const answerPayload: InterviewAnswer = {
+            answer_text: jawaban.value
+        }
+
+        const currentAnswer = jawaban.value
+        jawaban.value = '' // Clear input immediately
+        isAiTyping.value = true
+
+        // Send answer to backend using token directly
+        const response = await InterviewApi.sendAnswer(
+            answerPayload,
+            accessToken
+        )
+
+        if (response.success) {
+            // The SSE connection will handle the response
+            // Update question counter locally
+            nextQuestion()
+        } else {
+            throw new Error(response.message || 'Gagal mengirim jawaban')
+        }
+
+    } catch (error) {
+        handleError(error)
+        // Restore the answer if sending failed
+        if (!jawaban.value) {
+            jawaban.value = currentAnswer
+        }
+    } finally {
+        isLoading.value = false
+    }
 }
 
-.typing-indicator span:nth-of-type(3) {
-    animation-delay: -0.9s;
+const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault()
+        kirimJawaban()
+    }
 }
 
-@keyframes bounce {
+const handleRestart = () => {
+    closeSSEConnection()
+    resetSession()
+    selectedPosition.value = ''
+    showValidationError.value = false
+    jawaban.value = ''
+    errorMessage.value = null
+}
 
-    0%,
-    60%,
-    100% {
-        transform: translateY(0);
+// Watch for position input changes to clear validation error
+watch(selectedPosition, () => {
+    if (showValidationError.value && selectedPosition.value.trim().length >= 2) {
+        showValidationError.value = false
+    }
+})
+
+// Watch for new messages and scroll to bottom
+watch(messages, () => {
+    nextTick(() => {
+        if (messagesRef.value) {
+            messagesRef.value.scrollTop = messagesRef.value.scrollHeight
+        }
+    })
+}, { deep: true })
+
+// Lifecycle
+onMounted(() => {
+    nextTick(() => {
+        if (textareaRef.value) {
+            textareaRef.value.focus()
+        }
+    })
+})
+
+onUnmounted(() => {
+    closeSSEConnection()
+    resetSession()
+})
+
+// Handle page visibility change to manage connections
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        console.log('Page hidden, connections may be paused')
+    } else {
+        console.log('Page visible again')
+    }
+})
+</script>
+
+<style scoped>
+/* Custom scrollbar */
+.overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Focus styles */
+textarea:focus,
+input:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+    border-color: #3b82f6 !important;
+}
+
+/* Error state styles */
+input.border-red-300:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+    border-color: #ef4444 !important;
+}
+
+/* Ensure textarea and input are interactive */
+textarea,
+input {
+    resize: none !important;
+    background-color: white !important;
+    color: #1e293b !important;
+}
+
+textarea:disabled,
+input:disabled {
+    background-color: #f8fafc !important;
+    color: #64748b !important;
+    cursor: not-allowed !important;
+}
+
+/* Gradient text effect */
+.bg-clip-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+/* Message bubble custom styles */
+.rounded-tr-sm {
+    border-top-right-radius: 0.375rem;
+}
+
+.rounded-tl-sm {
+    border-top-left-radius: 0.375rem;
+}
+
+/* Smooth transitions */
+* {
+    transition: all 0.2s ease;
+}
+
+/* Button hover effects */
+button:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .max-w-4xl {
+        max-width: 100%;
     }
 
-    30% {
-        transform: translateY(-4px);
+    .flex-row-reverse {
+        flex-direction: column;
+    }
+
+    .text-4xl {
+        font-size: 2rem;
+    }
+
+    .text-2xl {
+        font-size: 1.5rem;
     }
 }
 </style>
