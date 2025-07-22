@@ -152,7 +152,7 @@
                             <div class="relative z-10">
                                 <div
                                     class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-                                   <img src="/public/3d-resume-analyzer.png" alt="">
+                                    <img src="/public/3d-resume-analyzer.png" alt="">
                                 </div>
                                 <h3 class="text-3xl font-bold text-gray-900 mb-4">Smart Resume Analyzer</h3>
                                 <p class="text-gray-600 leading-relaxed mb-8 text-lg">
@@ -213,7 +213,7 @@
                             class="bg-white rounded-3xl p-8 h-full shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-100 hover:border-green-200 relative overflow-hidden">
                             <div
                                 class="absolute -top-16 -right-16 w-32 h-32 bg-gradient-to-br from-red-400/20 to-red-600/20 rounded-full blur-xl group-hover:scale-125 transition-transform duration-700">
-                            </div>  
+                            </div>
 
                             <div class="relative z-10">
                                 <div
@@ -225,14 +225,16 @@
                                     Create professional resumes in minutes using AI. Choose from ATS-optimized templates
                                     designed by HR experts.
                                 </p>
-                                <button
-                                    class="flex items-center text-red-600 font-semibold group-hover:translate-x-2 transition-transform">
-                                    Generate CV
-                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
+                                <NuxtLink to="/generate-cv">
+                                    <button
+                                        class="flex items-center text-red-600 font-semibold group-hover:translate-x-2 transition-transform">
+                                        Generate CV
+                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+                                </NuxtLink>
                             </div>
                         </div>
                     </div>
@@ -248,21 +250,23 @@
                             <div class="relative z-10">
                                 <div
                                     class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
-                                   <img src="/public/3d-interview.png" alt="">
+                                    <img src="/public/3d-interview.png" alt="">
                                 </div>
                                 <h3 class="text-2xl font-bold text-gray-900 mb-4">AI Interview Simulator</h3>
                                 <p class="text-gray-600 leading-relaxed mb-6">
                                     Practice with realistic AI-powered mock interviews. Get instant feedback and improve
                                     your performance.
                                 </p>
-                                <button
-                                    class="flex items-center text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
-                                    Start Practice
-                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
+                                <NuxtLink to="/interview">
+                                    <button
+                                        class="flex items-center text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
+                                        Start Practice
+                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+                                </NuxtLink>
                             </div>
                         </div>
                     </div>
@@ -290,6 +294,7 @@
                                     Discover personalized job opportunities that match your skills and career goals.
                                     Apply with one-click using your optimized resume.
                                 </p>
+                                <NuxtLink to="/get-jobs">
                                 <button
                                     class="flex items-center text-orange-600 font-semibold text-lg group-hover:translate-x-2 transition-transform duration-300">
                                     Explore Jobs
@@ -298,6 +303,7 @@
                                             d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>
                                 </button>
+                                </NuxtLink>
                             </div>
                             <div class="flex-shrink-0 grid grid-cols-2 gap-4">
                                 <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-2xl">
@@ -322,8 +328,6 @@
                 </div>
             </div>
         </section>
-
-
 
         <section id="steps" class="py-20 px-6 bg-gray-50">
             <div class="max-w-7xl mx-auto">
@@ -483,269 +487,7 @@
             </div>
         </section>
 
-        <section id="testimonials" class="py-20 px-6 bg-gradient-to-br from-gray-50 to-blue-50">
-            <div class="max-w-7xl mx-auto">
-                <div ref="testimonialsHeader" class="text-center mb-16 opacity-0">
-                    <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                        Loved by Students
-                        <span
-                            class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Worldwide</span>
-                    </h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Don't just take our word for it. Hear what our successful users have to say.
-                    </p>
-                </div>
-                <!-- Infinite Scroll Testimonials -->
-                <div class="relative overflow-hidden">
-                    <div ref="testimonialScroll" class="flex space-x-6 animate-scroll">
-                        <!-- First set -->
-                        <div class="flex space-x-6 min-w-full">
-                            <div
-                                class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
-                                <div class="flex items-center mb-6">
-                                    <div
-                                        class="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                                        S
-                                    </div>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-900 text-lg">Sarah M.</h4>
-                                        <p class="text-gray-600">Software Engineer</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-700 leading-relaxed mb-4">
-                                    "JobPrep was a game-changer. The AI mock interviews were incredibly realistic, and I
-                                    nailed my weaknesses. I landed a job at my dream company!"
-                                </p>
-                                <div class="flex text-yellow-400">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
-                                <div class="flex items-center mb-6">
-                                    <div
-                                        class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                                        D
-                                    </div>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-900 text-lg">David L.</h4>
-                                        <p class="text-gray-600">Product Manager</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-700 leading-relaxed mb-4">
-                                    "The expert coaching sessions were invaluable. My coach gave me the confidence and
-                                    frameworks I needed to tackle any question. Highly recommended!"
-                                </p>
-                                <div class="flex text-yellow-400">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
-                                <div class="flex items-center mb-6">
-                                    <div
-                                        class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                                        E
-                                    </div>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-900 text-lg">Emily R.</h4>
-                                        <p class="text-gray-600">UX Designer</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-700 leading-relaxed mb-4">
-                                    "I used to get so nervous before interviews. JobPrep's practice tools helped me
-                                    build confidence and communicate my skills effectively. Thank you!"
-                                </p>
-                                <div class="flex text-yellow-400">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="flex space-x-6 min-w-full">
-                            <div
-                                class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
-                                <div class="flex items-center mb-6">
-                                    <div
-                                        class="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                                        S
-                                    </div>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-900 text-lg">Sarah M.</h4>
-                                        <p class="text-gray-600">Software Engineer</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-700 leading-relaxed mb-4">
-                                    "JobPrep was a game-changer. The AI mock interviews were incredibly realistic, and I
-                                    nailed my weaknesses. I landed a job at my dream company!"
-                                </p>
-                                <div class="flex text-yellow-400">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
-                                <div class="flex items-center mb-6">
-                                    <div
-                                        class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                                        D
-                                    </div>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-900 text-lg">David L.</h4>
-                                        <p class="text-gray-600">Product Manager</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-700 leading-relaxed mb-4">
-                                    "The expert coaching sessions were invaluable. My coach gave me the confidence and
-                                    frameworks I needed to tackle any question. Highly recommended!"
-                                </p>
-                                <div class="flex text-yellow-400">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div
-                                class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
-                                <div class="flex items-center mb-6">
-                                    <div
-                                        class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                                        E
-                                    </div>
-                                    <div class="ml-4">
-                                        <h4 class="font-bold text-gray-900 text-lg">Emily R.</h4>
-                                        <p class="text-gray-600">UX Designer</p>
-                                    </div>
-                                </div>
-                                <p class="text-gray-700 leading-relaxed mb-4">
-                                    "I used to get so nervous before interviews. JobPrep's practice tools helped me
-                                    build confidence and communicate my skills effectively. Thank you!"
-                                </p>
-                                <div class="flex text-yellow-400">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- FAQ Section -->
         <section id="faq" class="py-20 px-6 bg-white relative overflow-hidden">
@@ -757,12 +499,12 @@
             <div class="max-w-4xl mx-auto relative z-10">
                 <div ref="faqHeader" class="text-center mb-16 opacity-0">
                     <div
-                        class="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                        class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6">
                         ❓ Frequently Asked Questions
                     </div>
                     <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                         Got
-                        <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                        <span class="bg-gradient-to-r from-blue-600 to-blue-900 bg-clip-text text-transparent">
                             Questions?
                         </span>
                     </h2>
@@ -826,6 +568,123 @@
                 </div>
             </div>
         </section>
+
+        <section id="testimonials" class="py-16 md:py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto">
+
+                <div class="text-center mb-12 md:mb-16 px-6">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        Loved by <span class="text-blue-600">Students Worldwide</span>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                        Don't just take our word for it. Hear what our successful users have to say.
+                    </p>
+                </div>
+
+                <div
+                    class="relative w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] group">
+                    <div class="flex space-x-6 animate-scroll group-hover:paused">
+
+                        <div class="flex space-x-6">
+                            <div
+                                class="w-[85vw] sm:w-96 flex-shrink-0 bg-white rounded-2xl p-8 shadow-md border border-gray-100">
+                                <div class="flex items-center mb-5">
+                                    <img class="w-14 h-14 rounded-full object-cover"
+                                        src="https://i.pravatar.cc/150?u=sarah" alt="Avatar of Sarah M.">
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-gray-900 text-lg">Sarah M.</h4>
+                                        <p class="text-gray-500 text-sm">Software Engineer</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 leading-relaxed">"JobPrep was a game-changer. The AI mock
+                                    interviews were incredibly realistic, and I nailed my weaknesses. I landed a job at
+                                    my dream company!"</p>
+                            </div>
+
+                            <div
+                                class="w-[85vw] sm:w-96 flex-shrink-0 bg-white rounded-2xl p-8 shadow-md border border-gray-100">
+                                <div class="flex items-center mb-5">
+                                    <img class="w-14 h-14 rounded-full object-cover"
+                                        src="https://i.pravatar.cc/150?u=david" alt="Avatar of David L.">
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-gray-900 text-lg">David L.</h4>
+                                        <p class="text-gray-500 text-sm">Product Manager</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 leading-relaxed">"The expert coaching sessions were invaluable.
+                                    My coach gave me the confidence and frameworks I needed to tackle any question.
+                                    Highly recommended!"</p>
+                            </div>
+
+                            <div
+                                class="w-[85vw] sm:w-96 flex-shrink-0 bg-white rounded-2xl p-8 shadow-md border border-gray-100">
+                                <div class="flex items-center mb-5">
+                                    <img class="w-14 h-14 rounded-full object-cover"
+                                        src="https://i.pravatar.cc/150?u=emily" alt="Avatar of Emily R.">
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-gray-900 text-lg">Emily R.</h4>
+                                        <p class="text-gray-500 text-sm">UX Designer</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 leading-relaxed">"I used to get so nervous before interviews.
+                                    JobPrep's practice tools helped me build confidence and communicate my skills
+                                    effectively. Thank you!"</p>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-6">
+                            <div
+                                class="w-[85vw] sm:w-96 flex-shrink-0 bg-white rounded-2xl p-8 shadow-md border border-gray-100">
+                                <div class="flex items-center mb-5">
+                                    <img class="w-14 h-14 rounded-full object-cover"
+                                        src="https://i.pravatar.cc/150?u=sarah" alt="Avatar of Sarah M.">
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-gray-900 text-lg">Sarah M.</h4>
+                                        <p class="text-gray-500 text-sm">Software Engineer</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 leading-relaxed">"JobPrep was a game-changer. The AI mock
+                                    interviews were incredibly realistic, and I nailed my weaknesses. I landed a job at
+                                    my dream company!"</p>
+                            </div>
+
+                            <div
+                                class="w-[85vw] sm:w-96 flex-shrink-0 bg-white rounded-2xl p-8 shadow-md border border-gray-100">
+                                <div class="flex items-center mb-5">
+                                    <img class="w-14 h-14 rounded-full object-cover"
+                                        src="https://i.pravatar.cc/150?u=david" alt="Avatar of David L.">
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-gray-900 text-lg">David L.</h4>
+                                        <p class="text-gray-500 text-sm">Product Manager</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 leading-relaxed">"The expert coaching sessions were invaluable.
+                                    My coach gave me the confidence and frameworks I needed to tackle any question.
+                                    Highly recommended!"</p>
+                            </div>
+
+                            <div
+                                class="w-[85vw] sm:w-96 flex-shrink-0 bg-white rounded-2xl p-8 shadow-md border border-gray-100">
+                                <div class="flex items-center mb-5">
+                                    <img class="w-14 h-14 rounded-full object-cover"
+                                        src="https://i.pravatar.cc/150?u=emily" alt="Avatar of Emily R.">
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-gray-900 text-lg">Emily R.</h4>
+                                        <p class="text-gray-500 text-sm">UX Designer</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 leading-relaxed">"I used to get so nervous before interviews.
+                                    JobPrep's practice tools helped me build confidence and communicate my skills
+                                    effectively. Thank you!"</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <section class="py-20 px-6 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
             <!-- Background decorations -->
             <div class="absolute inset-0">
@@ -847,124 +706,61 @@
                         Your future starts now.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
-                        <button ref="finalCTAButton"
-                            class="group bg-white text-blue-600 px-12 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-white/25 flex items-center gap-3">
-                            Get Started for Free
-                            <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-8 text-blue-100">
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <span>Free trial available</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <span>No Credit Card Required</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <span>Trusted by Top Universities</span>
-                        </div>
+                        <NuxtLink to="/auth/signin">
+                            <button ref="finalCTAButton"
+                                class="group bg-white text-blue-600 px-12 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-white/25 flex items-center gap-3">
+                                Get Started for Free
+                                <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </button>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
         </section>
-
         <!-- Footer -->
-        <footer class="bg-gray-900 py-16 px-6">
-            <div class="max-w-7xl mx-auto">
-                <div class="grid md:grid-cols-4 gap-8 mb-12">
-                    <!-- Company -->
-                    <div>
-                        <div class="flex items-center space-x-3 mb-6">
-                            <div
-                                class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
-                                <span class="text-white font-bold text-lg">JP</span>
-                            </div>
-                            <span class="text-2xl font-bold text-white">JobPrep</span>
-                        </div>
-                        <p class="text-gray-400 leading-relaxed mb-6">
-                            Your personal interview coach to help you land your dream job.
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="#"
-                                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                                </svg>
-                            </a>
-                            <a href="#"
-                                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                </svg>
-                            </a>
-                            <a href="#"
-                                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z" />
-                                </svg>
-                            </a>
-                        </div>
+        <footer class="bg-gray-900 py-8 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center shadow-lg mr-2">
+                        <img class="w-10 h-10 rounded-full" src="/public/logo-jobprep.jpg" alt="">
                     </div>
-                    <!-- Company Links -->
-                    <div>
-                        <h3 class="text-white font-semibold text-lg mb-6">Company</h3>
-                        <ul class="space-y-4">
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                        </ul>
-                    </div>
-                    <!-- Resources -->
-                    <div>
-                        <h3 class="text-white font-semibold text-lg mb-6">Resources</h3>
-                        <ul class="space-y-4">
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a>
-                            </li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Docs</a></li>
-                        </ul>
-                    </div>
-                    <!-- Legal -->
-                    <div>
-                        <h3 class="text-white font-semibold text-lg mb-6">Legal</h3>
-                        <ul class="space-y-4">
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of
-                                    Service</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-                            </li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
-                            </li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">GDPR</a></li>
-                        </ul>
-                    </div>
+                    <span class="text-xl font-bold text-white">JobPrep</span>
                 </div>
-                <div class="border-t border-gray-800 pt-8 text-center">
-                    <p class="text-gray-400">&copy; 2024 JobPrep. All rights reserved.</p>
+                <p class="text-gray-400 mb-4">
+                    Your personal interview coach to help you land your dream job.
+                </p>
+                <div class="flex justify-center space-x-4 mb-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z" />
+                        </svg>
+                    </a>
                 </div>
+                <!-- <div class="flex flex-wrap justify-center gap-6 mb-4 text-gray-400 text-sm">
+                    <a href="#" class="hover:text-white">About</a>
+                    <a href="#" class="hover:text-white">Blog</a>
+                    <a href="#" class="hover:text-white">Contact</a>
+                    <a href="#" class="hover:text-white">Terms</a>
+                    <a href="#" class="hover:text-white">Privacy</a>
+                </div> -->
+                <p class="text-gray-500 text-xs">&copy; 2025 JobPrep. All rights reserved.</p>
             </div>
         </footer>
     </div>
@@ -1340,5 +1136,19 @@ onUnmounted(() => {
 .faq-leave-to {
     opacity: 0;
     transform: translateY(-10px);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-scroll {
+    animation: scroll 40s linear infinite;
 }
 </style>
