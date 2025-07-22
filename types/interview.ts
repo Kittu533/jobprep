@@ -16,6 +16,7 @@ export interface InterviewAnswer {
     feedback?: string
     timestamp: string
     audioUrl?: string
+    
 }
 
 export interface InterviewSession {

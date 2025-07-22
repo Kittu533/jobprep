@@ -50,7 +50,8 @@
                                 :class="atsScore >= 75 ? 'text-green-500' : atsScore >= 60 ? 'text-orange-500' : 'text-red-500'">
                                 <NuxtIcon v-if="atsScore >= 75" name="material-symbols:check-circle" />
                                 <NuxtIcon v-else name="material-symbols:warning" />
-                                <span>{{ atsScore >= 75 ? 'Good Resume' : atsScore >= 60 ? 'Needs Improvement' : 'PoorResume' }}</span>
+                                <span>{{ atsScore >= 75 ? 'Good Resume' : atsScore >= 60 ? 'Needs Improvement' :
+                                    'PoorResume' }}</span>
                             </div>
                         </div>
 
@@ -95,7 +96,8 @@
                                     <div>
                                         <p class="font-semibold text-slate-800 capitalize">{{ getLabel(name) }}</p>
                                     </div>
-                                    <NuxtIcon v-if="score < 75" name="material-symbols:priority-high" class="text-red-400 text-base ml-1" />
+                                    <NuxtIcon v-if="score < 75" name="material-symbols:priority-high"
+                                        class="text-red-400 text-base ml-1" />
                                 </div>
                                 <p class="text-xs text-slate-500">
                                     <template v-if="score >= 75">Excellent</template>
@@ -167,13 +169,36 @@ async function handleUpload() {
         fileUrl.value = result.file_url
         toast.add({ title: 'Analysis Success', color: 'success' })
     } catch (err: any) {
-        let message = err.message || 'Upload failed'
-        if (err.data?.error) message = err.data.error
-        if (err.data && Array.isArray(err.data.detail)) {
-            message = err.data.detail.map((d: any) => d.msg).join(', ')
+        // Default message
+        let message = 'Upload gagal. Silakan coba lagi.';
+
+        // Handle status code
+        if (err.statusCode === 401) {
+            message = 'Anda belum login atau sesi Anda telah habis. Silakan login ulang.';
+        } else if (err.statusCode === 403) {
+            message = 'Anda tidak memiliki akses ke fitur ini.';
+        } else if (err.statusCode === 400) {
+            message = 'Data yang dikirim tidak valid. Periksa file resume Anda.';
+        } else if (err.statusCode === 500) {
+            message = 'Server sedang bermasalah. Coba lagi beberapa saat.';
+        } else if (err.data?.error) {
+            message = err.data.error;
+        } else if (err.data && Array.isArray(err.data.detail)) {
+            message = err.data.detail.map((d: any) => d.msg).join(', ');
         }
-        toast.add({ title: 'Error', description: message, color: 'error' })
-    } finally {
+
+        // Jika masih mengandung URL, hapus
+        const apiUrlPattern = /(http|https):\/\/[^\s"]+/g;
+        message = message.replace(apiUrlPattern, '').replace(/["'\[\]]/g, '').trim();
+
+        // Atasi pesan error terlalu teknis atau kosong
+        if (!message || message.length > 120 || message.match(/^(\[POST\]|\[GET\])/)) {
+            message = 'Terjadi kesalahan. Silakan coba lagi.';
+        }
+
+        toast.add({ title: 'Error', description: message, color: 'error' });
+    }
+    finally {
         loading.value = false
     }
 }

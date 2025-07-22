@@ -8,27 +8,25 @@
                         <!-- Floating badges -->
                         <div class="flex justify-center mb-8">
                             <div
-                                class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold animate-bounce">
+                                class="bg--blue100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold animate-bounce">
                                 🚀 Trusted by 10,000+ Students
                             </div>
                         </div>
-
                         <h1 class="text-4xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight">
                             Land Your Dream Job, Faster.
                         </h1>
-
                         <p class="text-md md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
                             JobPrep is your personal interview coach. Get AI-powered
                             practice, expert feedback, and proven strategies to ace your
                             next interview.
                         </p>
-
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
-                            <ButtonHome ref="mainCTA" />
+                            <NuxtLink to="/auth/signin">
+                                <ButtonHome ref="mainCTA" />
+                            </NuxtLink>
                         </div>
                     </div>
                 </div>
-
                 <!-- Stats Marquee -->
                 <div ref="heroContent2" class="relative overflow-hidden bg-white rounded-3xl shadow-xl p-8 mb-16">
                     <div ref="marqueeContainer" class="flex space-x-12 animate-marquee">
@@ -42,7 +40,6 @@
                                     <div class="text-gray-600">Success Rate</div>
                                 </div>
                             </div>
-
                             <div class="flex items-center space-x-4">
                                 <div class="w-12 h-12 rounded-full flex items-center justify-center">
                                     <img src="/public/3d-icon-person.png" alt="">
@@ -52,9 +49,8 @@
                                     <div class="text-gray-600">Students Helped</div>
                                 </div>
                             </div>
-
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12rounded-full flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center">
                                     <img src="/public/3d-icon-24hour.png" alt="">
                                 </div>
                                 <div>
@@ -62,7 +58,6 @@
                                     <div class="text-gray-600">AI Support</div>
                                 </div>
                             </div>
-
                             <div class="flex items-center space-x-4">
                                 <div class="w-12 h-12 rounded-full flex items-center justify-center">
                                     <img src="/public/3d-icon-checklist.png" alt="">
@@ -84,7 +79,6 @@
                                     <div class="text-gray-600">Success Rate</div>
                                 </div>
                             </div>
-
                             <div class="flex items-center space-x-4">
                                 <div class="w-12 h-12 rounded-full flex items-center justify-center">
                                     <img src="/public/3d-icon-person.png" alt="">
@@ -94,9 +88,8 @@
                                     <div class="text-gray-600">Students Helped</div>
                                 </div>
                             </div>
-
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12rounded-full flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full flex items-center justify-center">
                                     <img src="/public/3d-icon-24hour.png" alt="">
                                 </div>
                                 <div>
@@ -104,7 +97,6 @@
                                     <div class="text-gray-600">AI Support</div>
                                 </div>
                             </div>
-
                             <div class="flex items-center space-x-4">
                                 <div class="w-12 h-12 rounded-full flex items-center justify-center">
                                     <img src="/public/3d-icon-checklist.png" alt="">
@@ -120,100 +112,209 @@
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section id="features" class="py-20 px-6 bg-gray-50">
-            <div class="max-w-7xl mx-auto">
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <div ref="feature1" class="group opacity-0 transform translate-y-8">
+        <!-- Enhanced Features Section -->
+        <section id="features" class="py-20 px-6 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+            <!-- Background decorations -->
+            <div class="absolute inset-0">
+                <div class="absolute top-20 left-10 w-72 h-72 bg-blue-100/30 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-100/30 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div ref="featuresHeader" class="text-center mb-20 opacity-0">
+                    <div
+                        class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6">
+                        ⚡ Powerful Features
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                        Everything You Need to
+                        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                            Succeed
+                        </span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Our comprehensive suite of AI-powered tools will transform your job search journey
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <!-- Resume Analyzer - Large Feature -->
+                    <div ref="feature1" class="group opacity-0 transform translate-y-8 lg:row-span-2">
                         <div
-                            class="bg-white rounded-3xl p-8 h-full shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-blue-200 relative overflow-hidden">
+                            class="bg-white rounded-3xl p-8 h-full shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-100 hover:border-blue-200 relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full -translate-y-16 translate-x-16 opacity-50">
+                                class="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700">
                             </div>
+                            <div
+                                class="absolute -bottom-20 -left-20 w-32 h-32 bg-gradient-to-br from-green-400/20 to-green  -600/20 rounded-full blur-xl group-hover:scale-125 transition-transform duration-700">
+                            </div>
+
                             <div class="relative z-10">
                                 <div
-                                    class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                    </svg>
+                                    class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                                   <img src="/public/3d-resume-analyzer.png" alt="">
                                 </div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Personalized Practice</h3>
-                                <p class="text-gray-600 leading-relaxed mb-6">
-                                    Practice with interview questions specifically tailored to your target role and
-                                    industry.
+                                <h3 class="text-3xl font-bold text-gray-900 mb-4">Smart Resume Analyzer</h3>
+                                <p class="text-gray-600 leading-relaxed mb-8 text-lg">
+                                    Upload your resume and get instant AI-powered analysis. Discover what recruiters
+                                    see, identify improvement areas, and optimize for Applicant Tracking Systems (ATS).
                                 </p>
-                                <div
-                                    class="flex items-center text-blue-600 font-semibold group-hover:translate-x-2 transition-transform">
-                                    Learn More
-                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 5l7 7-7 7" />
-                                    </svg>
+
+                                <div class="space-y-4 mb-8">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                                            <svg class="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <span class="text-gray-700">ATS Compatibility Score</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                                            <svg class="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <span class="text-gray-700">Keyword Optimization</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+                                            <svg class="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <span class="text-gray-700">Format & Design Review</span>
+                                    </div>
                                 </div>
+
+                                <NuxtLink to="/resume-analyser">
+                                    <button
+                                        class="flex items-center text-green-600 font-semibold text-lg group-hover:translate-x-2 transition-transform duration-300">
+                                        Try Resume Analyzer
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
+                                    </button>
+                                </NuxtLink>
                             </div>
                         </div>
                     </div>
 
+                    <!-- CV Generator -->
                     <div ref="feature2" class="group opacity-0 transform translate-y-8">
                         <div
-                            class="bg-white rounded-3xl p-8 h-full shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-green-200 relative overflow-hidden">
+                            class="bg-white rounded-3xl p-8 h-full shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-100 hover:border-green-200 relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-green-200 rounded-full -translate-y-16 translate-x-16 opacity-50">
-                            </div>
+                                class="absolute -top-16 -right-16 w-32 h-32 bg-gradient-to-br from-red-400/20 to-red-600/20 rounded-full blur-xl group-hover:scale-125 transition-transform duration-700">
+                            </div>  
+
                             <div class="relative z-10">
                                 <div
-                                    class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
+                                    class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shadow-lg">
+                                    <img src="/public/3d-resume-generator.png" alt="">
                                 </div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Expert Feedback</h3>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">AI CV Generator</h3>
                                 <p class="text-gray-600 leading-relaxed mb-6">
-                                    Receive detailed, actionable feedback on your answers from our AI and human experts.
+                                    Create professional resumes in minutes using AI. Choose from ATS-optimized templates
+                                    designed by HR experts.
                                 </p>
-                                <div
-                                    class="flex items-center text-green-600 font-semibold group-hover:translate-x-2 transition-transform">
-                                    Learn More
+                                <button
+                                    class="flex items-center text-red-600 font-semibold group-hover:translate-x-2 transition-transform">
+                                    Generate CV
                                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 5l7 7-7 7" />
                                     </svg>
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Interview Simulation -->
                     <div ref="feature3" class="group opacity-0 transform translate-y-8">
                         <div
-                            class="bg-white rounded-3xl p-8 h-full shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-purple-200 relative overflow-hidden">
+                            class="bg-white rounded-3xl p-8 h-full shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-100 hover:border-purple-200 relative overflow-hidden">
                             <div
-                                class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full -translate-y-16 translate-x-16 opacity-50">
+                                class="absolute -top-16 -right-16 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-purple-600/20 rounded-full blur-xl group-hover:scale-125 transition-transform duration-700">
                             </div>
+
                             <div class="relative z-10">
                                 <div
-                                    class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                    </svg>
+                                    class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                                   <img src="/public/3d-interview.png" alt="">
                                 </div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Interview Tips</h3>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">AI Interview Simulator</h3>
                                 <p class="text-gray-600 leading-relaxed mb-6">
-                                    Access a rich library of tips, strategies, and frameworks to master any interview
-                                    scenario.
+                                    Practice with realistic AI-powered mock interviews. Get instant feedback and improve
+                                    your performance.
                                 </p>
-                                <div
+                                <button
                                     class="flex items-center text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
-                                    Learn More
+                                    Start Practice
                                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 5l7 7-7 7" />
                                     </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Search Feature - Wide Card -->
+                <div ref="feature4" class="group opacity-0 transform translate-y-8">
+                    <div
+                        class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-100 hover:border-orange-200 relative overflow-hidden">
+                        <div
+                            class="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-600/20 rounded-full blur-xl group-hover:scale-125 transition-transform duration-700">
+                        </div>
+                        <div
+                            class="absolute -bottom-16 -right-16 w-32 h-32 bg-gradient-to-br from-red-400/20 to-red-600/20 rounded-full blur-xl group-hover:scale-110 transition-transform duration-700">
+                        </div>
+
+                        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between">
+                            <div class="flex-1 mb-8 lg:mb-0 lg:mr-12">
+                                <div
+                                    class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-rotate-2 transition-all duration-500 shadow-lg">
+                                    <img src="/public/3d-find-job.png" alt="">
+                                </div>
+                                <h3 class="text-3xl font-bold text-gray-900 mb-4">Smart Job Search</h3>
+                                <p class="text-gray-600 leading-relaxed mb-6 text-lg">
+                                    Discover personalized job opportunities that match your skills and career goals.
+                                    Apply with one-click using your optimized resume.
+                                </p>
+                                <button
+                                    class="flex items-center text-orange-600 font-semibold text-lg group-hover:translate-x-2 transition-transform duration-300">
+                                    Explore Jobs
+                                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="flex-shrink-0 grid grid-cols-2 gap-4">
+                                <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-2xl">
+                                    <div class="text-2xl font-bold text-orange-600">2k+</div>
+                                    <div class="text-orange-800 text-sm">Active Jobs</div>
+                                </div>
+                                <div class="bg-gradient-to-br from-red-50 to-red-100 p-4 rounded-2xl">
+                                    <div class="text-2xl font-bold text-red-600">100+</div>
+                                    <div class="text-red-800 text-sm">Companies</div>
+                                </div>
+                                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-4 rounded-2xl">
+                                    <div class="text-2xl font-bold text-yellow-600">95%</div>
+                                    <div class="text-yellow-800 text-sm">Match Rate</div>
+                                </div>
+                                <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-4 rounded-2xl">
+                                    <div class="text-2xl font-bold text-pink-600">24/7</div>
+                                    <div class="text-pink-800 text-sm">Support</div>
                                 </div>
                             </div>
                         </div>
@@ -222,8 +323,9 @@
             </div>
         </section>
 
-        <!-- Steps Section -->
-        <section id="steps" class="py-20 px-6 bg-white">
+
+
+        <section id="steps" class="py-20 px-6 bg-gray-50">
             <div class="max-w-7xl mx-auto">
                 <div ref="stepsHeader" class="text-center mb-20 opacity-0">
                     <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
@@ -235,7 +337,6 @@
                         Follow our proven path to career success, simplified for you.
                     </p>
                 </div>
-
                 <!-- Bento Grid Layout -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-fr">
                     <!-- Step 1 - Large Featured Card (spans 2 columns, 2 rows) -->
@@ -261,13 +362,11 @@
                                             class="w-56 h-56 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center">
                                             <img src="/public/3d-register.png" alt="" />
                                         </div>
-                                        <!-- <h3 class="text-2xl font-bold text-gray-900 mb-2">Create Profile</h3> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- Step 2 - Practice with AI -->
                     <div ref="step2" class="md:col-span-1 opacity-0 transform translate-y-8">
                         <div class="relative h-full min-h-[150px]">
@@ -290,15 +389,12 @@
                                         <div
                                             class="w-48 h-48 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center">
                                             <img src="/public/3d-resume-analyzer.png" alt="" />
-                                            <!-- <h3 class="text-2xl font-bold text-gray-900 mb-2">Analyze Resume</h3> -->
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- Step 3 - Expert Coaching -->
                     <div ref="step3" class="md:col-span-1 opacity-0 transform translate-y-8">
                         <div class="relative h-full min-h-[150px]">
@@ -322,13 +418,11 @@
                                             class="w-48 h-48 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center">
                                             <img src="/public/3d-interview.png" alt="" />
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- Step 4 - Mock Interviews -->
                     <div ref="step4" class="md:col-span-1 opacity-0 transform translate-y-8">
                         <div class="relative h-full min-h-[150px]">
@@ -344,7 +438,7 @@
                                 </div>
                                 <div
                                     class="absolute flex text-white text-sm text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-24 -right-12 w-28 h-32 rounded-full bg-orange-600 transition-all duration-500">
-                                Find Jobs Easily<br />& Apply Instantly
+                                    Find Jobs Easily<br />& Apply Instantly
                                 </div>
                                 <div class="w-full h-full items-center justify-center flex p-6">
                                     <div class="text-center">
@@ -352,13 +446,11 @@
                                             class="w-48 h-48 mx-auto mb-4 shadow-2xl shadow-blue-200/60 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center">
                                             <img src="/public/3d-find-job.png" alt="" />
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- Step 5 - Land Your Job -->
                     <div ref="step5" class="md:col-span-1 opacity-0 transform translate-y-8">
                         <div class="relative h-full min-h-[150px]">
@@ -391,7 +483,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section with Infinite Scroll -->
         <section id="testimonials" class="py-20 px-6 bg-gradient-to-br from-gray-50 to-blue-50">
             <div class="max-w-7xl mx-auto">
                 <div ref="testimonialsHeader" class="text-center mb-16 opacity-0">
@@ -404,7 +495,6 @@
                         Don't just take our word for it. Hear what our successful users have to say.
                     </p>
                 </div>
-
                 <!-- Infinite Scroll Testimonials -->
                 <div class="relative overflow-hidden">
                     <div ref="testimonialScroll" class="flex space-x-6 animate-scroll">
@@ -449,7 +539,6 @@
                                     </svg>
                                 </div>
                             </div>
-
                             <div
                                 class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
                                 <div class="flex items-center mb-6">
@@ -487,9 +576,12 @@
                                         <path
                                             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                     </svg>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
                                 </div>
                             </div>
-
                             <div
                                 class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
                                 <div class="flex items-center mb-6">
@@ -530,7 +622,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Duplicate set for seamless loop -->
                         <div class="flex space-x-6 min-w-full">
                             <div
@@ -572,7 +663,6 @@
                                     </svg>
                                 </div>
                             </div>
-
                             <div
                                 class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
                                 <div class="flex items-center mb-6">
@@ -612,7 +702,6 @@
                                     </svg>
                                 </div>
                             </div>
-
                             <div
                                 class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 min-w-[400px] border border-gray-100">
                                 <div class="flex items-center mb-6">
@@ -658,7 +747,85 @@
             </div>
         </section>
 
-        <!-- Final CTA Section -->
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 px-6 bg-white relative overflow-hidden">
+            <div class="absolute inset-0">
+                <div class="absolute top-32 left-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-60"></div>
+                <div class="absolute bottom-20 right-0 w-80 h-80 bg-purple-50 rounded-full blur-3xl opacity-60"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto relative z-10">
+                <div ref="faqHeader" class="text-center mb-16 opacity-0">
+                    <div
+                        class="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                        ❓ Frequently Asked Questions
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                        Got
+                        <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                            Questions?
+                        </span>
+                    </h2>
+                    <p class="text-xl text-gray-600">
+                        We've got answers. Here are the most common questions about JobPrep.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div v-for="(faq, index) in faqs" :key="index" :ref="el => faqItems[index] = el"
+                        class="opacity-0 transform translate-y-4">
+                        <div
+                            class="bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 overflow-hidden group">
+                            <button @click="toggleFAQ(index)"
+                                class="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-300">
+                                <h3
+                                    class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                    {{ faq.question }}
+                                </h3>
+                                <div class="flex-shrink-0 ml-4">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center transition-all duration-300"
+                                        :class="{ 'bg-blue-600 rotate-45': faq.isOpen }">
+                                        <svg class="w-5 h-5 transition-colors duration-300"
+                                            :class="faq.isOpen ? 'text-white' : 'text-blue-600'" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </button>
+                            <div :ref="el => faqAnswers[index] = el"
+                                class="overflow-hidden transition-all duration-500 ease-in-out"
+                                :style="{ maxHeight: faq.isOpen ? '200px' : '0px' }">
+                                <div class="px-8 pb-6">
+                                    <div
+                                        class="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-6">
+                                    </div>
+                                    <p class="text-gray-600 leading-relaxed text-lg">
+                                        {{ faq.answer }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ref="faqCTA" class="text-center mt-16 opacity-0">
+                    <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                            Still have questions?
+                        </h3>
+                        <p class="text-gray-600 mb-8">
+                            Our team is here to help you succeed. Get in touch with us anytime.
+                        </p>
+                        <button
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            Contact Support
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="py-20 px-6 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
             <!-- Background decorations -->
             <div class="absolute inset-0">
@@ -667,7 +834,6 @@
                 <div class="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full translate-x-48 translate-y-48">
                 </div>
             </div>
-
             <div class="max-w-4xl mx-auto text-center relative z-10">
                 <div ref="finalCTA" class="opacity-0">
                     <h2 class="text-5xl md:text-6xl font-bold text-white mb-6">
@@ -680,7 +846,6 @@
                         Join thousands of students who have landed their dream jobs with JobPrep.
                         Your future starts now.
                     </p>
-
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
                         <button ref="finalCTAButton"
                             class="group bg-white text-blue-600 px-12 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-white/25 flex items-center gap-3">
@@ -692,7 +857,6 @@
                             </svg>
                         </button>
                     </div>
-
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-8 text-blue-100">
                         <div class="flex items-center gap-2">
                             <svg class="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 20 20">
@@ -763,7 +927,6 @@
                             </a>
                         </div>
                     </div>
-
                     <!-- Company Links -->
                     <div>
                         <h3 class="text-white font-semibold text-lg mb-6">Company</h3>
@@ -774,7 +937,6 @@
                             <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                         </ul>
                     </div>
-
                     <!-- Resources -->
                     <div>
                         <h3 class="text-white font-semibold text-lg mb-6">Resources</h3>
@@ -786,7 +948,6 @@
                             <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Docs</a></li>
                         </ul>
                     </div>
-
                     <!-- Legal -->
                     <div>
                         <h3 class="text-white font-semibold text-lg mb-6">Legal</h3>
@@ -801,7 +962,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="border-t border-gray-800 pt-8 text-center">
                     <p class="text-gray-400">&copy; 2024 JobPrep. All rights reserved.</p>
                 </div>
@@ -810,8 +970,8 @@
     </div>
 </template>
 
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, reactive } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ButtonHome from '~/components/button-home.vue'
@@ -824,9 +984,11 @@ const navbar = ref(null)
 const heroContent = ref(null)
 const heroContent2 = ref(null)
 const marqueeContainer = ref(null)
+const featuresHeader = ref(null)
 const feature1 = ref(null)
 const feature2 = ref(null)
 const feature3 = ref(null)
+const feature4 = ref(null)
 const stepsHeader = ref(null)
 const step1 = ref(null)
 const step2 = ref(null)
@@ -838,9 +1000,77 @@ const testimonialScroll = ref(null)
 const finalCTA = ref(null)
 const mainCTA = ref(null)
 const finalCTAButton = ref(null)
+const faqHeader = ref(null)
+const faqCTA = ref(null)
+
+// FAQ related refs
+const faqItems = ref<(HTMLElement | null)[]>([])
+const faqAnswers = ref<(HTMLElement | null)[]>([])
 
 // Reactive data
 const scrolled = ref(false)
+
+// FAQ data
+const faqs = reactive([
+    {
+        question: "How does JobPrep's AI interview simulation work?",
+        answer: "Our AI uses natural language processing to conduct realistic mock interviews. It analyzes your responses, provides instant feedback on content, delivery, and body language, and offers personalized improvement suggestions.",
+        isOpen: false
+    },
+    {
+        question: "Can JobPrep help me create an ATS-friendly resume?",
+        answer: "Our AI resume generator creates ATS-optimized resumes using proven templates. It analyzes job descriptions and tailors your resume with the right keywords and format to pass through applicant tracking systems.",
+        isOpen: false
+    },
+    {
+        question: "What types of jobs can I find through JobPrep?",
+        answer: "JobPrep connects you with opportunities across all industries - from tech and healthcare to finance and creative fields. We partner with over 1000 companies, from startups to Fortune 500 corporations, offering roles at every career level.",
+        isOpen: false
+    },
+    {
+        question: "How accurate is the resume analysis feature?",
+        answer: "Our resume analyzer uses advanced AI trained on thousands of successful resumes and hiring manager feedback. It provides 95% accurate ATS compatibility scores and identifies specific areas for improvement with actionable recommendations.",
+        isOpen: false
+    },
+    {
+        question: "Is JobPrep suitable for recent graduates?",
+        answer: "Yes! JobPrep is specifically designed for students and recent graduates. Our platform includes entry-level focused content, university career services integration, and specialized coaching for first-time job seekers.",
+        isOpen: false
+    },
+    {
+        question: "What makes JobPrep different from other job search platforms?",
+        answer: "JobPrep combines AI-powered interview practice, resume optimization, and job matching in one platform. Unlike traditional job boards, we focus on preparation and skill development, not just job listings. Our 95% success rate speaks for itself.",
+        isOpen: false
+    }
+])
+
+// FAQ toggle function
+const toggleFAQ = (index: number) => {
+    // Close all other FAQs
+    faqs.forEach((faq, i) => {
+        if (i !== index) {
+            faq.isOpen = false
+        }
+    })
+
+    // Toggle the clicked FAQ
+    faqs[index].isOpen = !faqs[index].isOpen
+
+    // Animate the FAQ item
+    if (faqs[index].isOpen) {
+        gsap.to(faqItems.value[index], {
+            scale: 1.02,
+            duration: 0.3,
+            ease: "power2.out"
+        })
+    } else {
+        gsap.to(faqItems.value[index], {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out"
+        })
+    }
+}
 
 // Handle scroll for navbar
 const handleScroll = () => {
@@ -864,7 +1094,6 @@ onMounted(() => {
         "-=0.5"
     )
 
-
     // CTA button pulse animation
     gsap.to([mainCTA.value, finalCTAButton.value], {
         scale: 1.02,
@@ -874,16 +1103,83 @@ onMounted(() => {
         repeat: -1
     })
 
-    // Scroll-triggered animations
-    gsap.fromTo([feature1.value, feature2.value, feature3.value],
+    // Features header animation
+    gsap.fromTo(featuresHeader.value,
         { opacity: 0, y: 50 },
         {
             opacity: 1,
             y: 0,
-            duration: 0.6,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: featuresHeader.value,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            }
+        }
+    )
+
+    // Features animations with stagger
+    gsap.fromTo([feature1.value, feature2.value, feature3.value, feature4.value],
+        { opacity: 0, y: 50, scale: 0.9 },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
             stagger: 0.2,
+            ease: "back.out(1.7)",
             scrollTrigger: {
                 trigger: feature1.value,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            }
+        }
+    )
+
+    // FAQ animations
+    gsap.fromTo(faqHeader.value,
+        { opacity: 0, y: 50 },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: faqHeader.value,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            }
+        }
+    )
+
+    // FAQ items staggered animation
+    gsap.fromTo(faqItems.value,
+        { opacity: 0, y: 30 },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: faqItems.value[0],
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            }
+        }
+    )
+
+    gsap.fromTo(faqCTA.value,
+        { opacity: 0, y: 30 },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: faqCTA.value,
                 start: "top 80%",
                 end: "bottom 20%",
                 toggleActions: "play none none reverse"
@@ -909,7 +1205,7 @@ onMounted(() => {
 
     // Steps staggered animation
     gsap.fromTo(
-        [step1.value, step2.value, step3.value, step4?.value, step5?.value],
+        [step1.value, step2.value, step3.value, step4.value, step5.value],
         { opacity: 0, x: 50 },
         {
             opacity: 1,
@@ -1032,5 +1328,17 @@ onUnmounted(() => {
 
 .group:hover .group-hover\:bg-blue-200 {
     background-color: rgb(191 219 254);
+}
+
+/* FAQ specific animations */
+.faq-enter-active,
+.faq-leave-active {
+    transition: all 0.3s ease;
+}
+
+.faq-enter-from,
+.faq-leave-to {
+    opacity: 0;
+    transform: translateY(-10px);
 }
 </style>

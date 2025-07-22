@@ -239,17 +239,17 @@ function resetForm() {
     <div class="min-h-screen bg-gray-50">
         <!-- Header -->
         <div class="bg-white border-b">
-            <div class="container mx-auto px-4 py-6">
-                <div class="flex items-center justify-between">
-                    <h1 class="text-3xl font-bold text-gray-900">Generate Your CV</h1>
-                    <div class="flex items-center space-x-4">
-                        <div class="flex items-center space-x-2">
-                            <div v-for="i in 3" :key="i" class="h-2 w-8 rounded-full transition-colors duration-200"
-                                :class="step >= i ? 'bg-blue-600' : 'bg-gray-200'" />
-                        </div>
-                        <span class="text-sm text-gray-600">Step {{ step }} of 3</span>
-                    </div>
+            <div class="container mx-auto px-4 py-4 sm:py-6">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 text-center sm:text-left">Generate Your CV</h1>
+                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <div v-for="i in 3" :key="i" class="h-2 w-8 rounded-full transition-colors duration-200"
+                    :class="step >= i ? 'bg-blue-600' : 'bg-gray-200'" />
                 </div>
+                <span class="text-sm text-gray-600 whitespace-nowrap">Step {{ step }} of 3</span>
+                </div>
+            </div>
             </div>
         </div>
 

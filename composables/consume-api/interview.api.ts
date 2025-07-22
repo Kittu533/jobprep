@@ -34,38 +34,42 @@ export class InterviewApi {
      * Send answer to AI interviewer
      * POST /interview/answer/{access_token}
      */
-    static async sendAnswer(
-        answer: InterviewAnswer,
-        accessToken?: string
-    ): Promise<{ success: boolean; message?: string }> {
+    /**
+     * Send answer to AI interviewer
+     * POST /interview/answer/{access_token}
+     */
+    static async sendAnswer(answer: InterviewAnswer, token: string): Promise<ApiResponse> {
         try {
-            const token = accessToken || localStorage.getItem('access_token') || localStorage.getItem('token')
-            if (!token) {
-                throw new Error('Access token not found')
-            }
+            console.log('Sending answer:', answer)
 
-            const payload = {
-                data: answer.answer_text,
+            // Format body according to API specification
+            const requestBody = {
+               data: answer.answer, // harus sama dengan yang dikirim dari Vue
                 tipe_input: "text"
             }
 
-            // Menggunakan usePost dengan endpoint yang sudah include base URL
-            const response = await usePost<string>(`/interview/answer/${token}`, payload)
+            // Send request with token in URL path, not in headers
+            const response = await usePost(`/interview/answer/${token}`, requestBody, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
 
+            console.log('Answer sent successfully:', response)
             return {
                 success: true,
-                message: response
+                data: response,
+                message: 'Answer sent successfully'
             }
-
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error sending answer:', error)
             return {
                 success: false,
-                message: error instanceof Error ? error.message : 'Unknown error occurred'
+                data: null,
+                message: error.message || 'Failed to send answer'
             }
         }
     }
-
 
     /**
      * Create SSE stream connection

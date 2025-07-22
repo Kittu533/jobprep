@@ -16,14 +16,14 @@
                         </div>
                         <h1
                             class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
-                            Simulator Wawancara AI
+                            AI Interview Simulator
                         </h1>
                     </div>
 
                     <!-- Progress Indicator -->
                     <div v-if="sessionStarted" class="flex items-center gap-4">
                         <div class="text-sm text-slate-600 hidden sm:block">
-                            Pertanyaan <span class="font-bold text-slate-800">{{ currentQuestion }}</span> / {{
+                            Question <span class="font-bold text-slate-800">{{ currentQuestion }}</span> / {{
                                 totalQuestions }}
                         </div>
                         <div class="w-24 sm:w-32 h-2 bg-slate-200 rounded-full overflow-hidden">
@@ -40,27 +40,26 @@
             <!-- Session Setup -->
             <div v-if="!sessionStarted" ref="setupRef" class="text-center space-y-8">
                 <div class="space-y-4">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Siap untuk Wawancara?</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Ready for Your Interview?</h2>
                     <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto">
-                        Latih kemampuan wawancara Anda dengan AI interviewer. Dapatkan feedback real-time dan tingkatkan
-                        jawaban Anda.
+                        Practice your interview skills with an AI interviewer. Get real-time feedback and improve your answers.
                     </p>
                 </div>
 
                 <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-8 max-w-md mx-auto">
                     <div class="space-y-6">
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-3">Posisi Wawancara</label>
+                            <label class="block text-sm font-semibold text-slate-700 mb-3">Interview Position</label>
                             <input type="text" v-model="selectedPosition"
-                                placeholder="Contoh: Software Engineer, UI/UX Designer, Product Manager"
+                                placeholder="Example: Software Engineer, UI/UX Designer, Product Manager"
                                 class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                                 :class="{ 'border-red-300 focus:ring-red-500': showValidationError }" />
                             <div class="mt-2 text-xs text-slate-500">
-                                <p class="mb-1">Contoh posisi yang bisa Anda masukkan:</p>
-                                <p>Frontend Developer, Data Analyst, Marketing Manager, HR Specialist, dll.</p>
+                                <p class="mb-1">Example positions you can enter:</p>
+                                <p>Frontend Developer, Data Analyst, Marketing Manager, HR Specialist, etc.</p>
                             </div>
                             <div v-if="showValidationError" class="mt-2 text-sm text-red-600">
-                                Mohon masukkan posisi wawancara yang ingin Anda lamar
+                                Please enter the interview position you want to apply for
                             </div>
                         </div>
 
@@ -70,7 +69,7 @@
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
-                                Mulai Wawancara
+                                Start Interview
                             </span>
                             <span v-else class="flex items-center justify-center gap-2">
                                 <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -167,7 +166,7 @@
                         <div class="flex gap-4 items-end">
                             <div class="flex-1">
                                 <textarea v-model="jawaban" @input="handleInput" @keydown="handleKeyDown"
-                                    :disabled="isLoading || isAiTyping"
+                                    :disabled="isLoading || isAiTyping || isCompleted"
                                     placeholder="Ketik jawaban Anda di sini... (Ctrl+Enter untuk mengirim)"
                                     class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none bg-white"
                                     rows="3" ref="textareaRef" />
@@ -187,7 +186,7 @@
                             </button>
                         </div>
                         <div class="mt-2 text-xs text-slate-500 text-center">
-                            Pertanyaan {{ currentQuestion }} dari {{ totalQuestions }} • Tekan Ctrl+Enter untuk mengirim
+                            Question {{ currentQuestion }} of {{ totalQuestions }} • Press Ctrl+Enter to send
                         </div>
                     </div>
                 </div>
@@ -266,6 +265,39 @@ const errorMessage = ref<string | null>(null)
 let eventSource: EventSource | null = null
 let streamReader: ReadableStreamDefaultReader<Uint8Array> | null = null
 
+// Position-based initial questions (updated for free text input)
+const getInitialQuestion = (position: string): string => {
+    const positionLower = position.toLowerCase()
+
+    const questionMap: Record<string, string> = {
+        'software engineer': 'Selamat datang! Mari kita mulai wawancara untuk posisi Software Engineer. Bisa Anda ceritakan sedikit tentang diri Anda dan pengalaman programming yang pernah Anda miliki?',
+        'frontend developer': 'Halo! Mari kita mulai wawancara untuk posisi Frontend Developer. Bisa Anda perkenalkan diri dan ceritakan pengalaman Anda dalam mengembangkan user interface?',
+        'backend developer': 'Selamat datang! Mari kita mulai wawancara untuk posisi Backend Developer. Bisa Anda ceritakan tentang diri Anda dan pengalaman dalam mengembangkan sistem backend?',
+        'fullstack developer': 'Halo! Mari kita mulai wawancara untuk posisi Fullstack Developer. Bisa Anda perkenalkan diri dan ceritakan pengalaman Anda dalam pengembangan web end-to-end?',
+        'data analyst': 'Selamat datang! Mari kita mulai wawancara untuk posisi Data Analyst. Bisa Anda ceritakan tentang diri Anda dan pengalaman dalam analisis data?',
+        'data scientist': 'Halo! Mari kita mulai wawancara untuk posisi Data Scientist. Bisa Anda perkenalkan diri dan ceritakan pengalaman Anda dalam data science?',
+        'ui/ux designer': 'Selamat datang! Mari kita mulai wawancara untuk posisi UI/UX Designer. Bisa Anda ceritakan tentang diri Anda dan pendekatan design yang Anda gunakan?',
+        'product manager': 'Halo! Mari kita mulai wawancara untuk posisi Product Manager. Bisa Anda perkenalkan diri dan ceritakan pengalaman Anda dalam product management?',
+        'marketing manager': 'Selamat datang! Mari kita mulai wawancara untuk posisi Marketing Manager. Bisa Anda ceritakan tentang diri Anda dan strategi marketing yang pernah Anda terapkan?',
+        'hr specialist': 'Halo! Mari kita mulai wawancara untuk posisi HR Specialist. Bisa Anda perkenalkan diri dan ceritakan pengalaman Anda di bidang human resources?',
+        'finance': 'Selamat datang! Mari kita mulai wawancara untuk posisi Finance. Bisa Anda ceritakan tentang diri Anda dan pengalaman dalam bidang keuangan?',
+        'business analyst': 'Halo! Mari kita mulai wawancara untuk posisi Business Analyst. Bisa Anda perkenalkan diri dan ceritakan pengalaman analisis bisnis yang pernah Anda lakukan?',
+        'project manager': 'Selamat datang! Mari kita mulai wawancara untuk posisi Project Manager. Bisa Anda ceritakan tentang diri Anda dan pengalaman dalam mengelola proyek?',
+        'quality assurance': 'Halo! Mari kita mulai wawancara untuk posisi Quality Assurance. Bisa Anda perkenalkan diri dan ceritakan pengalaman testing yang pernah Anda lakukan?',
+        'devops engineer': 'Selamat datang! Mari kita mulai wawancara untuk posisi DevOps Engineer. Bisa Anda ceritakan tentang diri Anda dan pengalaman dalam DevOps practices?'
+    }
+
+    // Check for matches with more flexible matching
+    for (const [key, question] of Object.entries(questionMap)) {
+        if (positionLower.includes(key) || key.includes(positionLower)) {
+            return question
+        }
+    }
+
+    // Default question if no specific match found
+    return `Selamat datang! Mari kita mulai wawancara untuk posisi ${position}. Bisa Anda ceritakan sedikit tentang diri Anda dan mengapa Anda tertarik dengan posisi ini?`
+}
+
 // Computed properties
 const bisaKirim = computed(() => {
     return jawaban.value.trim().length > 0 &&
@@ -304,6 +336,7 @@ const handleSSEMessage = (data: any) => {
             console.log('Received question:', questionText)
 
             isAiTyping.value = false
+            isLoading.value = false // Tambahkan ini
             addMessage({
                 type: 'ai',
                 text: questionText,
@@ -311,11 +344,9 @@ const handleSSEMessage = (data: any) => {
                 questionNumber: data.questionNumber || currentQuestion.value
             })
 
-            // Focus on textarea after AI message appears
             nextTick(() => {
                 textareaRef.value?.focus()
             })
-
         } else if (data.type === 'complete') {
             // Handle interview completion with summary
             console.log('Interview completed with summary:', data.summary)
@@ -381,52 +412,9 @@ const handleSSEMessage = (data: any) => {
     } catch (error) {
         console.error('Error processing interview message:', error)
         isAiTyping.value = false
+        isLoading.value = false // Tambahkan ini
     }
 }
-const handleSendMessage = async () => {
-    if (!canSendAnswer.value) return
-
-    try {
-        isLoading.value = true
-        const answerText = jawaban.value.trim()
-
-        // Add user message to chat
-        const userMessageId = addMessage({
-            type: 'user',
-            text: answerText,
-            timestamp: new Date().toISOString()
-        })
-
-        // Clear current answer and show AI typing
-        clearCurrentAnswer()
-        isAiTyping.value = true
-
-        // Send answer to API
-        const answerData: InterviewAnswer = {
-            answer_text: answerText,
-            timestamp: new Date().toISOString()
-        }
-
-        const response = await InterviewApi.sendAnswer(answerData, getToken())
-
-        if (!response.success) {
-            throw new Error(response.message || 'Failed to send answer')
-        }
-
-        console.log('Answer sent successfully:', response.message)
-
-        // Move to next question
-        nextQuestion()
-
-    } catch (error) {
-        console.error('Error sending answer:', error)
-        handleError(error)
-        isAiTyping.value = false
-    } finally {
-        isLoading.value = false
-    }
-}
-
 
 const closeSSEConnection = () => {
     if (eventSource) {
@@ -434,7 +422,6 @@ const closeSSEConnection = () => {
         eventSource = null
     }
 
-    // Don't need to manage streamReader here since processStream handles it internally
     if (streamReader) {
         try {
             streamReader.releaseLock()
@@ -444,7 +431,6 @@ const closeSSEConnection = () => {
         streamReader = null
     }
 }
-
 
 // Methods
 const handleInput = (event: Event) => {
@@ -480,7 +466,30 @@ const handleStartInterview = async () => {
         // Start session in store - use token as session identifier
         startSession(cleanPosition, sessionResponse.token)
 
-        // Use fetch stream directly since EventSource doesn't support Authorization headers
+        // Add initial hardcoded question based on position
+        const initialQuestion = getInitialQuestion(cleanPosition)
+
+        // Show AI typing briefly before showing the initial question
+        isAiTyping.value = true
+
+        // Simulate AI thinking time
+        setTimeout(() => {
+            isAiTyping.value = false
+            isLoading.value = false // <-- tambahkan ini agar input aktif
+            addMessage({
+                type: 'ai',
+                text: initialQuestion,
+                timestamp: new Date().toISOString(),
+                questionNumber: 1
+            })
+
+            // Focus on textarea after initial question appears
+            nextTick(() => {
+                textareaRef.value?.focus()
+            })
+        }, 1500) // 1.5 second delay to simulate AI thinking
+
+        // Setup the SSE stream for subsequent interactions
         await setupFetchStream(accessToken, cleanPosition)
 
     } catch (error) {
@@ -489,6 +498,7 @@ const handleStartInterview = async () => {
         isLoading.value = false
     }
 }
+
 const setupFetchStream = async (accessToken: string, position: string) => {
     try {
         console.log('Setting up fetch stream for position:', position)
@@ -500,7 +510,6 @@ const setupFetchStream = async (accessToken: string, position: string) => {
 
         if (stream) {
             console.log('Stream created successfully, starting to process...')
-            isAiTyping.value = true
 
             await InterviewApi.processStream(
                 stream,
@@ -519,16 +528,19 @@ const setupFetchStream = async (accessToken: string, position: string) => {
                 }
             )
         } else {
-            throw new Error('Failed to create stream')
+            console.warn('Stream creation returned null, but initial question is already shown')
         }
     } catch (error) {
         console.error('Fetch stream setup failed:', error)
-        handleError(error)
-        isAiTyping.value = false
+        console.warn('Stream setup failed but interview can continue with initial question')
     }
 }
+
 const kirimJawaban = async () => {
     if (!bisaKirim.value) return
+
+    // Store current answer for potential restoration
+    const currentAnswer = jawaban.value
 
     try {
         isLoading.value = true
@@ -544,30 +556,27 @@ const kirimJawaban = async () => {
         }
 
         // Add user message immediately
-        const userMessageId = addMessage({
+        addMessage({
             type: 'user',
-            text: jawaban.value,
+            text: currentAnswer,
             timestamp: new Date().toISOString()
         })
 
-        // Prepare answer payload
+        // Prepare answer payload (pastikan property sesuai API)
         const answerPayload: InterviewAnswer = {
-            answer_text: jawaban.value
+            answer: currentAnswer // <--- fix di sini
         }
 
-        const currentAnswer = jawaban.value
         jawaban.value = '' // Clear input immediately
         isAiTyping.value = true
 
-        // Send answer to backend using token directly
+        // Send answer to backend
         const response = await InterviewApi.sendAnswer(
             answerPayload,
             accessToken
         )
 
         if (response.success) {
-            // The SSE connection will handle the response
-            // Update question counter locally
             nextQuestion()
         } else {
             throw new Error(response.message || 'Gagal mengirim jawaban')
@@ -575,10 +584,10 @@ const kirimJawaban = async () => {
 
     } catch (error) {
         handleError(error)
-        // Restore the answer if sending failed
-        if (!jawaban.value) {
+        if (!jawaban.value.trim()) {
             jawaban.value = currentAnswer
         }
+        isAiTyping.value = false
     } finally {
         isLoading.value = false
     }
