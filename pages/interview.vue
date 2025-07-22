@@ -309,10 +309,28 @@ const bisaKirim = computed(() => {
 // Error handling
 const handleError = (error: any) => {
     console.error('Interview error:', error)
-    errorMessage.value = error.message || 'Terjadi kesalahan tidak diketahui'
+
+    // Default safe message
+    let message = 'Terjadi kesalahan. Silakan coba lagi nanti.'
+
+    // Jika error instance dan punya message custom, tampilkan dengan filter
+    if (error && typeof error === 'object') {
+        // Jangan tampilkan URL API, status code, dsb
+        // Jika pesan error mengandung "http" atau "API", abaikan, pakai default
+        if (
+            error.message &&
+            typeof error.message === 'string' &&
+            !/http|api|interview|\/v1\//i.test(error.message)
+        ) {
+            message = error.message
+        }
+    }
+
+    errorMessage.value = message
     isLoading.value = false
     isAiTyping.value = false
 }
+
 
 // Input validation
 const validatePosition = () => {
